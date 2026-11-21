@@ -29,6 +29,11 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(status).json({ message: status === 400 ? 'Upload rejected (check file count and size).' : 'Something went wrong.' })
 })
 
-app.listen(env.port, () => {
-  console.log(`Qadri Glass API on :${env.port}  supabase=${Boolean(supabase)} mail=${mailConfigured}`)
-})
+// On Vercel the platform runs the exported app as a function; locally (and on any other host) we listen on a port.
+if (!process.env.VERCEL) {
+  app.listen(env.port, () => {
+    console.log(`Qadri Glass API on :${env.port}  supabase=${Boolean(supabase)} mail=${mailConfigured}`)
+  })
+}
+
+export default app
