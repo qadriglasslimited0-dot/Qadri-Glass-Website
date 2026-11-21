@@ -48,7 +48,7 @@ export function MaskImage({
   natural = false,
   parallax = false,
   pos = 'center',
-  curtain = 'rgb(var(--brand))',
+  curtain = 'rgb(var(--fg))',
   loading = 'lazy',
   onLoad,
 }: {

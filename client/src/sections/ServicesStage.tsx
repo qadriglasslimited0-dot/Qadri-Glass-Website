@@ -75,7 +75,7 @@ export default function ServicesStage() {
                           </div>
                         </>
                       ) : (
-                        <div className="theme-deep relative aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[linear-gradient(160deg,#2d8559,#1b5d3b)] p-[8%] shadow-[0_40px_80px_-40px_rgba(8,30,20,0.7)]">
+                        <div className="theme-deep relative aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[linear-gradient(160deg,#262d2a,#121614)] p-[8%] shadow-[0_40px_80px_-40px_rgba(8,30,20,0.7)]">
                           <div aria-hidden="true" className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.08) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
                           <Art className="relative h-full w-full text-[rgb(var(--accent))] transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
                         </div>

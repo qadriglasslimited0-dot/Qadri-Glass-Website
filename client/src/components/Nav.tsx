@@ -71,12 +71,12 @@ export default function Nav() {
       <header
         ref={header}
         data-scrolled="false"
-        className="fixed inset-x-0 top-0 z-[80] transition-[background,border-color,box-shadow] duration-500 data-[scrolled=true]:bg-ink/95 data-[scrolled=true]:shadow-[0_10px_40px_-24px_rgba(13,38,25,0.4)]"
+        className={`fixed inset-x-0 top-0 transition-[background,border-color,box-shadow] duration-500 data-[scrolled=true]:bg-ink/95 data-[scrolled=true]:shadow-[0_10px_40px_-24px_rgba(13,38,25,0.4)] ${open ? 'theme-deep z-[95] !bg-transparent !shadow-none' : 'z-[80]'}`}
         style={{ borderBottom: '1px solid transparent' }}
       >
         <div className="wrap flex h-[76px] items-center justify-between">
           <Link to="/" aria-label="Qadri Glass — home" className="relative z-[95] flex items-center gap-3" data-cursor="HOME">
-            <Logo variant="mark" className="h-8 w-auto sm:h-9" />
+            <Logo variant="mark" tone={open ? 'white' : 'color'} className="h-8 w-auto sm:h-9" />
             <span className="hidden font-display text-[19px] font-extrabold leading-none tracking-[-0.02em] sm:block">
               Qadri Glass
               <span className="mt-1.5 block font-sans text-[11px] font-bold uppercase tracking-[0.26em] text-mist">Est. 1960</span>

@@ -27,7 +27,7 @@ function Mission({ text }: { text: string }) {
     <section ref={root} data-section="Mission" className="theme-deep relative overflow-x-clip bg-ink">
       <div data-track className="relative lg:h-[170vh]">
         <div className="py-[var(--section)] lg:sticky lg:top-0 lg:flex lg:min-h-screen lg:items-center lg:py-0">
-          <div aria-hidden="true" className="pointer-events-none absolute -right-[10%] top-[-10%] h-[60vmax] w-[60vmax] rounded-full" style={{ background: 'radial-gradient(circle, rgb(var(--mintc) / 0.2), transparent 62%)' }} />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-[10%] top-[-10%] h-[60vmax] w-[60vmax] rounded-full" style={{ background: 'radial-gradient(circle, rgb(255 255 255 / 0.07), transparent 62%)' }} />
           <div className="wrap relative grid w-full items-center gap-14 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <p className="eyebrow mb-8">01 — Our mission</p>

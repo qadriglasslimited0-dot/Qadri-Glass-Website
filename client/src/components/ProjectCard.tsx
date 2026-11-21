@@ -22,7 +22,7 @@ export default function ProjectCard({ p, index, className = '', size = 'md' }: {
             <GlassPlaceholder index={index} label={p.pending ? 'Photography pending' : p.name} />
           </div>
         )}
-        <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#14452c]/85 via-[#14452c]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#0f1311]/85 via-[#0f1311]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <span className="pointer-events-none absolute bottom-4 left-5 z-20 translate-y-3 text-sm font-bold text-[#ffffff] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           View project
         </span>

@@ -11,12 +11,12 @@ import { FoundationGlass, EvolutionGlass, CurtainGlass, TodayGlass } from '../co
  */
 export default function Story() {
   const root = useRef<HTMLDivElement>(null)
-  const big = 'h-auto w-full'
+  const big = 'mx-auto h-auto w-[88%] md:w-full'
   const visuals: ReactNode[] = [
     <FoundationGlass key="v1" className={big} />,
     <EvolutionGlass key="v2" className={big} />,
     <CurtainGlass key="v3" className={big} />,
-    <TodayGlass key="v4" className="h-auto w-full" />,
+    <TodayGlass key="v4" className="mx-auto h-auto w-[92%] md:w-full" />,
   ]
 
   return (
@@ -59,7 +59,7 @@ export default function Story() {
                     <p className={`lead mt-3 max-w-[40ch] ${even ? 'md:ml-auto' : ''}`}>{c.text}</p>
                   </Reveal>
 
-                  <Reveal className={`col-start-2 row-start-2 md:row-start-1 ${even ? 'md:col-start-3' : 'md:col-start-1'}`} y={50}>
+                  <Reveal className={`col-span-2 col-start-1 row-start-2 md:col-span-1 md:row-start-1 ${even ? 'md:col-start-3' : 'md:col-start-1'}`} y={50}>
                     {visuals[i]}
                   </Reveal>
                 </li>

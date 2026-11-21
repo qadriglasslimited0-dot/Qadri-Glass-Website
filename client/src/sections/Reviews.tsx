@@ -15,8 +15,8 @@ function StarIcon({ on }: { on: boolean }) {
     <svg viewBox="0 0 24 24" className="h-full w-full" aria-hidden="true">
       <path
         d="M12 2.6l2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.5l-5.8 3.05 1.1-6.5-4.7-4.6 6.5-.95z"
-        fill={on ? 'rgb(var(--mintc))' : 'transparent'}
-        stroke={on ? 'rgb(var(--brand-mid))' : 'rgb(var(--mist))'}
+        fill={on ? 'rgb(var(--star))' : 'transparent'}
+        stroke={on ? 'rgb(var(--star))' : 'rgb(var(--mist))'}
         strokeWidth="1.6"
         strokeLinejoin="round"
         style={{ transition: 'fill .25s, stroke .25s' }}
@@ -160,7 +160,7 @@ export default function Reviews() {
 
         <div className="grid items-start gap-8 lg:grid-cols-12">
           {/* ---------- form ---------- */}
-          <Reveal className="theme-deep relative overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#2d8559,#1b5d3b)] p-6 text-white shadow-[0_50px_90px_-44px_rgba(8,30,20,0.8)] sm:p-9 lg:col-span-7">
+          <Reveal className="theme-deep relative overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#242b28,#101412)] p-6 text-white shadow-[0_50px_90px_-44px_rgba(8,30,20,0.8)] sm:p-9 lg:col-span-7">
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
             <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full" style={{ background: 'radial-gradient(circle, rgb(140 214 178 / 0.35), transparent 65%)' }} />
             {status === 'ok' ? (

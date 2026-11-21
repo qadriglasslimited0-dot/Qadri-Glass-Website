@@ -20,7 +20,7 @@ export default function CTA() {
           <h2 className="display text-[clamp(2.6rem,7.2vw,7.6rem)]">
             <Split text={"Let's shape\nsomething _extraordinary._"} />
           </h2>
-          <Reveal className="mt-12 flex flex-wrap items-center gap-4">
+          <Reveal className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 [&_.btn]:w-full [&_.btn]:justify-center sm:[&_.btn]:w-auto [&_span]:w-full sm:[&_span]:w-auto">
             <Magnetic>
               <Link to="/contact" className="btn btn-solid">
                 Start an enquiry <ArrowRight size={16} className="arrow" />

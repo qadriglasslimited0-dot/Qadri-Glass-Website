@@ -8,12 +8,12 @@ import { gsap, reducedMotion } from '../lib/gsap'
  */
 type P = { mouth: number; fill: number; ry: number; ey: number; bo: number; bi: number; tear: number; cheek: number; spark: number; r: number; g: number; b: number }
 const PRESETS: P[] = [
-  { mouth: 146, fill: 0, ry: 7, ey: 92, bo: 72, bi: 70, tear: 0, cheek: 0, spark: 0, r: 236, g: 245, b: 240 },
+  { mouth: 146, fill: 0, ry: 7, ey: 92, bo: 72, bi: 70, tear: 0, cheek: 0, spark: 0, r: 242, g: 240, b: 232 },
   { mouth: 116, fill: 0, ry: 6.5, ey: 94, bo: 82, bi: 66, tear: 1, cheek: 0, spark: 0, r: 192, g: 206, b: 224 },
   { mouth: 128, fill: 0, ry: 7, ey: 93, bo: 77, bi: 68, tear: 0, cheek: 0, spark: 0, r: 210, g: 218, b: 228 },
-  { mouth: 144, fill: 0, ry: 7, ey: 92, bo: 72, bi: 72, tear: 0, cheek: 0, spark: 0, r: 238, g: 240, b: 232 },
-  { mouth: 168, fill: 0, ry: 7, ey: 91, bo: 68, bi: 66, tear: 0, cheek: 0.7, spark: 0, r: 190, g: 232, b: 208 },
-  { mouth: 196, fill: 1, ry: 3.4, ey: 90, bo: 60, bi: 58, tear: 0, cheek: 1, spark: 1, r: 224, g: 249, b: 237 },
+  { mouth: 144, fill: 0, ry: 7, ey: 92, bo: 72, bi: 72, tear: 0, cheek: 0, spark: 0, r: 240, g: 238, b: 230 },
+  { mouth: 168, fill: 0, ry: 7, ey: 91, bo: 68, bi: 66, tear: 0, cheek: 0.7, spark: 0, r: 214, g: 232, b: 244 },
+  { mouth: 196, fill: 1, ry: 3.4, ey: 90, bo: 60, bi: 58, tear: 0, cheek: 1, spark: 1, r: 238, g: 246, b: 252 },
 ]
 
 export default function FaceRating({ value, className = '' }: { value: number; className?: string }) {
@@ -79,7 +79,7 @@ export default function FaceRating({ value, className = '' }: { value: number; c
   const spark = 'M0 -9 L2.4 -2.4 L9 0 L2.4 2.4 L0 9 L-2.4 2.4 L-9 0 L-2.4 -2.4 Z'
   return (
     <svg ref={ref} viewBox="0 0 200 200" className={className} aria-hidden="true">
-      <circle data-face cx="100" cy="100" r="84" fill="rgb(236 245 240)" stroke="#0d2619" strokeWidth="5" />
+      <circle data-face cx="100" cy="100" r="84" fill="rgb(242 240 232)" stroke="#0d2619" strokeWidth="5" />
       <ellipse data-cheek cx="52" cy="122" rx="13" ry="8" fill="#f08a7a" opacity="0" />
       <ellipse data-cheek cx="148" cy="122" rx="13" ry="8" fill="#f08a7a" opacity="0" />
       <path data-brow-l d="M52 72 L88 70" stroke="#0d2619" strokeWidth="5" strokeLinecap="round" fill="none" />

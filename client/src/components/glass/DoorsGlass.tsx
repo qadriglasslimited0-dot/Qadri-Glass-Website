@@ -69,11 +69,11 @@ export default function DoorsGlass({ photo, className = '' }: { photo?: string; 
         <div data-scene className="glass-scene absolute inset-0">
           <div data-sway className="glass-scene absolute inset-0">
             {/* floor shadow */}
-            <div className="absolute" style={{ left: 40, top: 560, width: 480, height: 90, background: 'radial-gradient(ellipse at center, rgb(8 50 30 / 0.45), transparent 68%)', transform: 'translateZ(-20px)' }} />
+            <div className="absolute" style={{ left: 40, top: 560, width: 480, height: 90, background: 'radial-gradient(ellipse at center, rgb(0 0 0 / 0.4), transparent 68%)', transform: 'translateZ(-20px)' }} />
             {/* light spilling out across the floor */}
-            <div data-spill className="absolute" style={{ left: 114, top: 570, width: 332, height: 300, background: 'linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(190 238 214 / 0.35) 55%, transparent)', transformOrigin: '50% 0', transform: 'rotateX(90deg)', clipPath: 'polygon(0 0, 100% 0, 118% 100%, -18% 100%)' }} />
+            <div data-spill className="absolute" style={{ left: 114, top: 570, width: 332, height: 300, background: 'linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(190 215 232 / 0.35) 55%, transparent)', transformOrigin: '50% 0', transform: 'rotateX(90deg)', clipPath: 'polygon(0 0, 100% 0, 118% 100%, -18% 100%)' }} />
             {/* the light behind the doors */}
-            <div data-light className="absolute overflow-hidden" style={{ left: 114, top: 76, width: 332, height: 494, background: 'linear-gradient(180deg, #FFFFFF 0%, #DFF6EA 45%, #A9E3C6 100%)', transform: 'translateZ(-70px)' }}>
+            <div data-light className="absolute overflow-hidden" style={{ left: 114, top: 76, width: 332, height: 494, background: 'linear-gradient(180deg, #FFFFFF 0%, #E8EFF4 45%, #BFD3E2 100%)', transform: 'translateZ(-70px)' }}>
               {photo && <img src={photo} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover opacity-90" />}
               <span className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 15%, rgb(255 255 255 / 0.85), transparent 60%)' }} />
             </div>

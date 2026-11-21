@@ -48,14 +48,14 @@ function Feature({ p, i, total }: { p: Project; i: number; total: number }) {
             <div className="relative" style={{ aspectRatio: String(ratio) }}>
               {img ? (
                 <div className="absolute inset-0 shadow-[0_50px_90px_-50px_rgba(10,40,25,0.7)]">
-                  <MaskImage src={img} alt={p.name} parallax pos="50% 38%" loading={i < 2 ? 'eager' : 'lazy'} className="h-full w-full" imgClassName="transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06]" curtain={deep ? 'rgb(var(--mintc))' : 'rgb(var(--brand))'} />
+                  <MaskImage src={img} alt={p.name} parallax pos="50% 38%" loading={i < 2 ? 'eager' : 'lazy'} className="h-full w-full" imgClassName="transition-transform duration-[1100ms] ease-out group-hover:scale-[1.06]" curtain={deep ? 'rgb(246 244 238)' : 'rgb(16 20 18)'} />
                 </div>
               ) : (
                 <div className="absolute inset-0">
                   <GlassPlaceholder index={i} label={p.pending ? 'Photography pending' : p.name} />
                 </div>
               )}
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#123f2a]/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#0f1311]/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <span className="absolute -bottom-5 right-6 z-30 grid h-[72px] w-[72px] place-items-center rounded-full bg-[rgb(var(--support))] text-[#0e2b3a] shadow-[0_20px_40px_-18px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110">
                 <ArrowUpRight size={28} />
               </span>

@@ -53,11 +53,11 @@ export default function HeroGlass({ className = '' }: { className?: string }) {
 
     // ---- always-on ambient motion ----
     const ambient: gsap.core.Animation[] = []
-    slabs.forEach((s, i) => {
+    slabs.slice(0, desktop ? slabs.length : 3).forEach((s, i) => {
       ambient.push(gsap.to(s, { y: i % 2 ? '+=9' : '-=9', duration: 3.2 + i * 0.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: intro.duration() }))
     })
     ambient.push(gsap.to(sway, { rotationY: 4, rotationX: -1.5, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 }))
-    wins.forEach((w, i) => {
+    wins.slice(0, desktop ? wins.length : 5).forEach((w, i) => {
       ambient.push(gsap.to(w, { opacity: 0.55, duration: 1.6 + (i % 4) * 0.5, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: (i * 0.37) % 4 }))
     })
     const scan = q('[data-scan]')[0]
@@ -98,6 +98,25 @@ export default function HeroGlass({ className = '' }: { className?: string }) {
       cleanup = () => window.removeEventListener('pointermove', move)
     }
 
+    // touch: drag sideways across the glass to turn it (vertical swipes still scroll the page)
+    if (!finePointer()) {
+      const mx = gsap.quickTo(mouse, 'rotationY', { duration: 0.9, ease: 'power3.out' })
+      const my = gsap.quickTo(mouse, 'rotationX', { duration: 0.9, ease: 'power3.out' })
+      const tv = (e: PointerEvent) => {
+        const r = el.getBoundingClientRect()
+        const nx = (e.clientX - r.left) / r.width - 0.5
+        const ny = (e.clientY - r.top) / r.height - 0.5
+        mx(-16 + nx * 40)
+        my(4 - ny * 16)
+      }
+      el.addEventListener('pointermove', tv)
+      el.addEventListener('pointerdown', tv)
+      cleanup = () => {
+        el.removeEventListener('pointermove', tv)
+        el.removeEventListener('pointerdown', tv)
+      }
+    }
+
     return () => {
       off()
       cleanup()
@@ -107,13 +126,13 @@ export default function HeroGlass({ className = '' }: { className?: string }) {
   })
 
   return (
-    <div ref={root} className={className}>
+    <div ref={root} className={className} style={{ touchAction: 'pan-y' }}>
       <Stage w={WORLD_W} h={WORLD_H} perspective={1700}>
         <div data-scroll className="glass-scene absolute inset-0">
           <div data-sway className="glass-scene absolute inset-0">
             <div data-mouse className="glass-scene absolute inset-0">
               {/* soft floor shadow */}
-              <div aria-hidden="true" className="absolute" style={{ left: 40, top: 636, width: 560, height: 96, background: 'radial-gradient(ellipse at center, rgb(26 90 51 / 0.3), transparent 68%)', transform: 'translateZ(-30px)' }} />
+              <div aria-hidden="true" className="absolute" style={{ left: 40, top: 636, width: 560, height: 96, background: 'radial-gradient(ellipse at center, rgb(16 22 20 / 0.22), transparent 68%)', transform: 'translateZ(-30px)' }} />
 
               {/* the world behind the glass (soft-edged so it never looks like a rectangle) */}
               <div

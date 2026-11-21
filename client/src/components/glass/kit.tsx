@@ -30,35 +30,35 @@ export function GlassDefs() {
     <svg aria-hidden="true" width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
       <defs>
         <linearGradient id="qg-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#F6FCF9" />
-          <stop offset="0.55" stopColor="#E0F3EA" />
-          <stop offset="1" stopColor="#C4E8D6" />
+          <stop offset="0" stopColor="#F8FAFB" />
+          <stop offset="0.55" stopColor="#E4ECF1" />
+          <stop offset="1" stopColor="#CBD9E3" />
         </linearGradient>
         <linearGradient id="qg-tower" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#F2FBF7" />
-          <stop offset="0.5" stopColor="#CBEBDD" />
-          <stop offset="1" stopColor="#8DD0B1" />
+          <stop offset="0" stopColor="#FFFFFF" />
+          <stop offset="0.5" stopColor="#DDE8EF" />
+          <stop offset="1" stopColor="#AFC5D4" />
         </linearGradient>
         <linearGradient id="qg-tower2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#E3F4EC" />
-          <stop offset="1" stopColor="#7CC7A4" />
+          <stop offset="0" stopColor="#EEF3F7" />
+          <stop offset="1" stopColor="#AAC1D0" />
         </linearGradient>
         <linearGradient id="qg-floor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#BFE5D2" />
-          <stop offset="1" stopColor="#F2FAF6" />
+          <stop offset="0" stopColor="#CAD9E3" />
+          <stop offset="1" stopColor="#F4F7F9" />
         </linearGradient>
         <radialGradient id="qg-sun" cx="0.5" cy="0.5" r="0.5">
           <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.95" />
-          <stop offset="0.45" stopColor="#E6F8F0" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#E6F8F0" stopOpacity="0" />
+          <stop offset="0.45" stopColor="#EAF3F9" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#EAF3F9" stopOpacity="0" />
         </radialGradient>
         <clipPath id="qg-arch-clip">
           <path d="M104 690 V245 A221 221 0 0 1 546 245 V690 Z" />
         </clipPath>
         <linearGradient id="qg-arch" x1="0" y1="0" x2="0.35" y2="1">
-          <stop offset="0" stopColor="#A9E3C6" />
-          <stop offset="0.36" stopColor="#4DB380" />
-          <stop offset="1" stopColor="#1E7A4A" />
+          <stop offset="0" stopColor="#CFDFEA" />
+          <stop offset="0.36" stopColor="#86A9C3" />
+          <stop offset="1" stopColor="#35637F" />
         </linearGradient>
         <g id="qg-world">
           <rect width={WORLD_W} height={WORLD_H} fill="url(#qg-sky)" />
@@ -67,25 +67,25 @@ export function GlassDefs() {
           <g clipPath="url(#qg-arch-clip)">
             <circle cx="470" cy="130" r="150" fill="url(#qg-sun)" />
             {/* low blocks either side */}
-            <rect x="112" y="470" width="44" height="220" fill="#E4F6EE" fillOpacity="0.75" />
-            <rect x="476" y="420" width="62" height="270" fill="#E4F6EE" fillOpacity="0.75" />
+            <rect x="112" y="470" width="44" height="220" fill="#F3F7FA" fillOpacity="0.8" />
+            <rect x="476" y="420" width="62" height="270" fill="#F3F7FA" fillOpacity="0.8" />
             {Array.from({ length: 5 }, (_, i) => (
-              <path key={'bl' + i} d={`M112 ${500 + 38 * i} H156 M476 ${450 + 40 * i} H538`} stroke="#1A5A33" strokeOpacity="0.2" />
+              <path key={'bl' + i} d={`M112 ${500 + 38 * i} H156 M476 ${450 + 40 * i} H538`} stroke="#27495E" strokeOpacity="0.2" />
             ))}
             {/* main tower with set-back crown */}
             <rect x={tx + 70} y={ty - 52} width={tw - 140} height="52" fill="url(#qg-tower)" />
             <rect x={tx} y={ty} width={tw} height={th} fill="url(#qg-tower)" />
             {Array.from({ length: cols - 1 }, (_, i) => (
-              <path key={'m' + i} d={`M${tx + cw * (i + 1)} ${ty - 52} V${ty + th}`} stroke="#1A5A33" strokeOpacity="0.22" />
+              <path key={'m' + i} d={`M${tx + cw * (i + 1)} ${ty - 52} V${ty + th}`} stroke="#27495E" strokeOpacity="0.22" />
             ))}
             {Array.from({ length: rows - 1 }, (_, i) => (
-              <path key={'mh' + i} d={`M${tx} ${ty + ch * (i + 1)} H${tx + tw}`} stroke="#1A5A33" strokeOpacity="0.2" />
+              <path key={'mh' + i} d={`M${tx} ${ty + ch * (i + 1)} H${tx + tw}`} stroke="#27495E" strokeOpacity="0.2" />
             ))}
-            <path d={`M${tx} ${ty} H${tx + tw}`} stroke="#1A5A33" strokeOpacity="0.5" strokeWidth="1.6" />
-            <path d={`M${tx + 70} ${ty - 52} H${tx + tw - 70}`} stroke="#1A5A33" strokeOpacity="0.45" strokeWidth="1.4" />
+            <path d={`M${tx} ${ty} H${tx + tw}`} stroke="#27495E" strokeOpacity="0.5" strokeWidth="1.6" />
+            <path d={`M${tx + 70} ${ty - 52} H${tx + tw - 70}`} stroke="#27495E" strokeOpacity="0.45" strokeWidth="1.4" />
             {/* panes catching the sky (animated opacity) */}
             {LIT.map(([c, r], i) => (
-              <rect key={i} data-win={i} x={tx + cw * c - cw + 1} y={ty + ch * r - ch + 1} width={cw - 2} height={ch - 2} fill="#48A6C7" opacity="0.06" />
+              <rect key={i} data-win={i} x={tx + cw * c - cw + 1} y={ty + ch * r - ch + 1} width={cw - 2} height={ch - 2} fill="#7FC0E4" opacity="0.06" />
             ))}
             {/* reflections across the façade */}
             <path d={`M${tx} ${ty + 90} L${tx + 120} ${ty} H${tx + 190} L${tx} ${ty + 230}Z`} fill="#fff" opacity="0.34" />
@@ -93,9 +93,9 @@ export function GlassDefs() {
             <path d={`M${tx + 250} ${ty} H${tx + 305} L${tx + 90} ${ty + th} H${tx + 35}Z`} fill="#fff" opacity="0.16" />
           </g>
           {/* arch outline + ground */}
-          <path d="M104 690 V245 A221 221 0 0 1 546 245 V690" stroke="#1A5A33" strokeOpacity="0.55" strokeWidth="2" fill="none" />
+          <path d="M104 690 V245 A221 221 0 0 1 546 245 V690" stroke="#27495E" strokeOpacity="0.55" strokeWidth="2" fill="none" />
           <rect y="672" width={WORLD_W} height="48" fill="url(#qg-floor)" />
-          <path d="M40 690 H600" stroke="#1A5A33" strokeOpacity="0.4" strokeWidth="1.5" />
+          <path d="M40 690 H600" stroke="#27495E" strokeOpacity="0.4" strokeWidth="1.5" />
         </g>
       </defs>
     </svg>
@@ -203,3 +203,16 @@ export const GlassBox = forwardRef<HTMLDivElement, BoxProps>(function GlassBox({
     </div>
   )
 })
+
+/** True on phones. Lets heavy decorative layers (refracted copies) be skipped where they cost the most. */
+export function useNarrow(max = 767) {
+  const q = `(max-width: ${max}px)`
+  const [n, setN] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches)
+  useEffect(() => {
+    const m = window.matchMedia(q)
+    const f = () => setN(m.matches)
+    m.addEventListener('change', f)
+    return () => m.removeEventListener('change', f)
+  }, [q])
+  return n
+}

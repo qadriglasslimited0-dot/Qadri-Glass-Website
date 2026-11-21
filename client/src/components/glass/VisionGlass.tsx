@@ -72,17 +72,17 @@ export default function VisionGlass({ className = '' }: { className?: string }) 
     }
   })
 
-  const shadeFace = <span data-shade aria-hidden="true" className="absolute inset-0" style={{ background: 'rgb(8 58 36)', opacity: 0 }} />
+  const shadeFace = <span data-shade aria-hidden="true" className="absolute inset-0" style={{ background: 'rgb(24 44 60)', opacity: 0 }} />
   return (
     <div ref={root} className={className} aria-hidden="true">
       <Stage w={560} h={600} perspective={2600}>
         <div data-tilt className="glass-scene absolute inset-0">
           <div data-turn className="glass-scene absolute inset-0">
             {/* floor reflection */}
-            <div className="absolute" style={{ left: CX - 300, top: BASE - 300, width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgb(140 214 178 / 0.55), rgb(140 214 178 / 0.12) 55%, transparent 70%)', transform: 'rotateX(90deg)' }} />
+            <div className="absolute" style={{ left: CX - 300, top: BASE - 300, width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgb(150 185 210 / 0.5), rgb(150 185 210 / 0.12) 55%, transparent 70%)', transform: 'rotateX(90deg)' }} />
 
-            <div aria-hidden="true" className="absolute" style={{ left: CX - R_OUT - 14, top: BASE - R_OUT - 14, width: (R_OUT + 14) * 2, height: (R_OUT + 14) * 2, borderRadius: '50%', border: '2px solid rgb(var(--brand) / 0.55)', transform: 'rotateX(90deg)' }} />
-            <div aria-hidden="true" className="absolute" style={{ left: CX - R_IN - 10, top: BASE - R_IN - 10, width: (R_IN + 10) * 2, height: (R_IN + 10) * 2, borderRadius: '50%', border: '1.5px dashed rgb(var(--brand) / 0.45)', transform: 'rotateX(90deg)' }} />
+            <div aria-hidden="true" className="absolute" style={{ left: CX - R_OUT - 14, top: BASE - R_OUT - 14, width: (R_OUT + 14) * 2, height: (R_OUT + 14) * 2, borderRadius: '50%', border: '2px solid rgb(var(--fg) / 0.32)', transform: 'rotateX(90deg)' }} />
+            <div aria-hidden="true" className="absolute" style={{ left: CX - R_IN - 10, top: BASE - R_IN - 10, width: (R_IN + 10) * 2, height: (R_IN + 10) * 2, borderRadius: '50%', border: '1.5px dashed rgb(var(--fg) / 0.3)', transform: 'rotateX(90deg)' }} />
             <div data-in>
               {ring(IN).map((a) => (
                 <div key={'i' + a} data-wrap data-angle={a} className="glass-scene absolute" style={{ left: CX - 45, top: BASE - 230, width: 90, height: 230, transform: `rotateY(${a}deg) translateZ(${R_IN}px)` }}>
@@ -103,7 +103,7 @@ export default function VisionGlass({ className = '' }: { className?: string }) 
             </div>
 
             {/* roof */}
-            <div data-roof className="absolute" style={{ left: CX - R_OUT - 8, top: BASE - 360 - R_OUT - 8, width: (R_OUT + 8) * 2, height: (R_OUT + 8) * 2, borderRadius: '50%', background: 'radial-gradient(circle, rgb(255 255 255 / 0.5), rgb(190 238 214 / 0.35) 60%, rgb(120 200 160 / 0.45))', boxShadow: 'inset 0 0 0 2px rgb(255 255 255 / 0.7)', transform: 'rotateX(90deg)' }} />
+            <div data-roof className="absolute" style={{ left: CX - R_OUT - 8, top: BASE - 360 - R_OUT - 8, width: (R_OUT + 8) * 2, height: (R_OUT + 8) * 2, borderRadius: '50%', background: 'radial-gradient(circle, rgb(255 255 255 / 0.55), rgb(205 224 238 / 0.4) 60%, rgb(140 175 200 / 0.45))', boxShadow: 'inset 0 0 0 2px rgb(255 255 255 / 0.7)', transform: 'rotateX(90deg)' }} />
           </div>
         </div>
       </Stage>

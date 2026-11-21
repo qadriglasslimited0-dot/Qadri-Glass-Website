@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { gsap, EASE } from '../../lib/gsap'
 import { useMotion } from '../../hooks/useMotion'
-import { GlassBox, Slab, Stage, WorldCopy } from './kit'
+import { GlassBox, Slab, Stage, WorldCopy, useNarrow } from './kit'
 
 /**
  * Four large glass compositions for "Our story". Each one assembles as it scrolls into view and keeps a
@@ -15,7 +15,7 @@ import { GlassBox, Slab, Stage, WorldCopy } from './kit'
 const trig = (el: Element, start = 'top 88%', end = 'center 52%') => ({ trigger: el, start, end, scrub: true })
 
 const Floor = ({ y = 400, w = 440, h = 70 }: { y?: number; w?: number; h?: number }) => (
-  <div aria-hidden="true" className="absolute" style={{ left: (560 - w) / 2, top: y, width: w, height: h, background: 'radial-gradient(ellipse at center, rgb(26 90 51 / 0.28), transparent 68%)', transform: 'translateZ(-20px)' }} />
+  <div aria-hidden="true" className="absolute" style={{ left: (560 - w) / 2, top: y, width: w, height: h, background: 'radial-gradient(ellipse at center, rgb(16 22 20 / 0.2), transparent 68%)', transform: 'translateZ(-20px)' }} />
 )
 
 /* ---------------------------------- 1. Foundation ---------------------------------- */
@@ -96,6 +96,7 @@ const COLS = 4
 const ROWS = 3
 export function CurtainGlass({ className = '' }: { className?: string }) {
   const root = useRef<HTMLDivElement>(null)
+  const narrow = useNarrow()
   useMotion(root, ({ reduced }) => {
     const el = root.current!
     const q = gsap.utils.selector(el)
@@ -131,7 +132,7 @@ export function CurtainGlass({ className = '' }: { className?: string }) {
               const y = 30 + r * 132
               return (
                 <Slab key={n} x={x} y={y} w={122} h={124} t={9} z={0} delay={(c + r) * 0.55}>
-                  <WorldCopy ox={x} oy={y} dx={-10 + c * 4} dy={-6 + r * 4} />
+                  {!narrow && <WorldCopy ox={x} oy={y} dx={-10 + c * 4} dy={-6 + r * 4} />}
                 </Slab>
               )
             })}
@@ -182,7 +183,7 @@ export function TodayGlass({ className = '' }: { className?: string }) {
           <div data-sway className="glass-scene absolute inset-0">
             <Floor y={540} w={520} h={90} />
             {/* the arch behind: the same window onto the city used in the hero */}
-            <div aria-hidden="true" className="absolute" style={{ left: 70, top: 70, width: 420, height: 520, borderRadius: '210px 210px 0 0', background: 'linear-gradient(180deg, #B6E8CE, #5CBB8A 50%, #2F8F5B)', transform: 'translateZ(-150px)', boxShadow: '0 0 0 1px rgb(26 90 51 / 0.3)' }} />
+            <div aria-hidden="true" className="absolute" style={{ left: 70, top: 70, width: 420, height: 520, borderRadius: '210px 210px 0 0', background: 'linear-gradient(180deg, #D4E3EE, #8FB0C6 50%, #4E7C99)', transform: 'translateZ(-150px)', boxShadow: '0 0 0 1px rgb(39 73 94 / 0.3)' }} />
             <GlassBox data-block x={50} y={290} w={92} h={250} d={70} z={-60} lit={LIT_SIDE} data={{ block: 1 }} />
             <GlassBox x={400} y={210} w={104} h={330} d={80} z={-40} lit={LIT_SIDE} data={{ block: 2 }} />
             <GlassBox x={168} y={44} w={196} h={496} d={110} z={10} lit={LIT_FRONT} data={{ block: 3 }} />

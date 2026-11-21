@@ -70,12 +70,12 @@ export default function MissionGlass({ className = '' }: { className?: string })
         <defs>
           <linearGradient id="mg-beam" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0" stopColor="#FFFFFF" stopOpacity="0" />
-            <stop offset="0.12" stopColor="#8CD6B2" />
+            <stop offset="0.12" stopColor="#CFE6F5" />
             <stop offset="1" stopColor="#48A6C7" />
           </linearGradient>
           <linearGradient id="mg-pane" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.5" />
-            <stop offset="0.5" stopColor="#B9E6D0" stopOpacity="0.22" />
+            <stop offset="0.5" stopColor="#D9E8F2" stopOpacity="0.22" />
             <stop offset="1" stopColor="#FFFFFF" stopOpacity="0.34" />
           </linearGradient>
         </defs>
@@ -93,7 +93,7 @@ export default function MissionGlass({ className = '' }: { className?: string })
           const x = X0 + i * STEP
           return (
             <g key={i} data-pane>
-              <path d={`M${x + W} ${Y0 - 18} L${x + W + 13} ${Y0 - 13} V${Y0 + H - 13} L${x + W} ${Y0 + H - 18}Z`} fill="rgb(54 150 100)" stroke="rgb(255 255 255 / 0.5)" strokeWidth="1" />
+              <path d={`M${x + W} ${Y0 - 18} L${x + W + 13} ${Y0 - 13} V${Y0 + H - 13} L${x + W} ${Y0 + H - 18}Z`} fill="rgb(96 132 154)" stroke="rgb(255 255 255 / 0.5)" strokeWidth="1" />
               <path d={`M${x} ${Y0} L${x + W} ${Y0 - 18} V${Y0 + H - 18} L${x} ${Y0 + H}Z`} fill="url(#mg-pane)" stroke="rgb(255 255 255 / 0.85)" strokeWidth="1.4" />
               <path d={`M${x + 12} ${Y0 + 40} L${x + 44} ${Y0 + 22} M${x + 12} ${Y0 + 86} L${x + 58} ${Y0 + 60}`} stroke="rgb(255 255 255 / 0.55)" strokeWidth="1.4" />
             </g>

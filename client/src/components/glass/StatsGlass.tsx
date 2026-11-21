@@ -92,7 +92,7 @@ export default function StatsGlass() {
           <path key={'h' + i} data-line pathLength={1} className="draw" d={`M0 ${i * 90} H1440`} />
         ))}
       </svg>
-      <div data-glow className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35" style={{ background: 'radial-gradient(circle, rgb(140 214 178 / 0.35), transparent 65%)' }} />
+      <div data-glow className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-35" style={{ background: 'radial-gradient(circle, rgb(150 190 215 / 0.26), transparent 65%)' }} />
       <div data-band className="absolute inset-y-0 left-0 w-[22%] -skew-x-12" style={{ background: 'linear-gradient(90deg, transparent, rgb(255 255 255 / 0.1), transparent)' }} />
 
       <div data-obj className="absolute left-1/2 top-1/2 w-[min(34vw,500px)]">

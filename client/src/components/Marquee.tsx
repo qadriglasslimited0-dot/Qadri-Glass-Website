@@ -78,7 +78,7 @@ export default function Marquee() {
   )
 
   return (
-    <div ref={root} className="theme-brand relative overflow-hidden bg-ink py-6 sm:py-9" aria-hidden="true">
+    <div ref={root} className="theme-deep relative overflow-hidden bg-ink py-6 sm:py-9" aria-hidden="true">
       <div data-mq className="flex w-max will-change-transform">
         {row(ROW_A, false, 'a1')}
         {row(ROW_A, false, 'a2')}
