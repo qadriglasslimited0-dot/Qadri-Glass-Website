@@ -53,8 +53,8 @@ export function FacadeArt({ className = '' }: { className?: string }) {
   return (
     <DrawSVG viewBox="0 0 400 320" className={className}>
       <rect className="fade" x="60" y="40" width="280" height="250" fill="rgb(var(--mintc) / 0.2)" stroke="none" />
-      <rect className="fade" x="106" y="102" width="47" height="62" fill="rgb(var(--amber) / 0.28)" stroke="none" />
-      <rect className="fade" x="247" y="164" width="47" height="62" fill="rgb(var(--amber) / 0.2)" stroke="none" />
+      <rect className="fade" x="106" y="102" width="47" height="62" fill="rgb(var(--support) / 0.28)" stroke="none" />
+      <rect className="fade" x="247" y="164" width="47" height="62" fill="rgb(var(--support) / 0.2)" stroke="none" />
       {D('M60 290 V40 H340 V290 Z')}
       {D('M106 40 V290')}
       {D('M153 40 V290')}
@@ -79,14 +79,14 @@ export function FabricationArt({ className = '' }: { className?: string }) {
     <DrawSVG viewBox="0 0 400 320" className={className}>
       <path className="fade" d="M50 80 H300 Q350 80 350 130 V250 H50 Z" fill="rgb(var(--mintc) / 0.22)" stroke="none" />
       {D('M50 80 H300 Q350 80 350 130 V250 H50 Z')}
-      {D('M82 112 H292 Q318 112 318 138 V218 H82 Z', { strokeDasharray: '0.012 0.02', strokeOpacity: 0.95, stroke: 'rgb(var(--amber))', strokeWidth: 2.4 })}
+      {D('M82 112 H292 Q318 112 318 138 V218 H82 Z', { strokeDasharray: '0.012 0.02', strokeOpacity: 0.95, stroke: 'rgb(var(--support))', strokeWidth: 2.4 })}
       {D('M50 52 H350')}
       {D('M50 44 V60')}
       {D('M350 44 V60')}
       {D('M22 80 V250')}
       {D('M14 80 H30')}
       {D('M14 250 H30')}
-      {D('M200 150 V190 M180 170 H220', { stroke: 'rgb(var(--amber))' })}
+      {D('M200 150 V190 M180 170 H220', { stroke: 'rgb(var(--support))' })}
       {D('M58 238 L98 198', { strokeOpacity: 0.5 })}
       {D('M70 240 L110 200', { strokeOpacity: 0.35 })}
     </DrawSVG>
@@ -100,10 +100,10 @@ export function InstallArt({ className = '' }: { className?: string }) {
       <rect className="fade" x="134" y="34" width="168" height="190" fill="rgb(var(--mintc) / 0.26)" stroke="none" />
       {D('M90 290 V40 H310 V290 Z')}
       {D('M116 264 V66 H284 V264 Z', { strokeOpacity: 0.7 })}
-      {D('M134 224 V34 H302 V224 Z', { stroke: 'rgb(var(--amber))', strokeWidth: 2.2 })}
+      {D('M134 224 V34 H302 V224 Z', { stroke: 'rgb(var(--support))', strokeWidth: 2.2 })}
       {D('M170 142 H230 Q238 142 238 150 Q238 158 230 158 H170 Q162 158 162 150 Q162 142 170 142 Z')}
       {D('M200 142 V158', { strokeOpacity: 0.5 })}
-      <circle className="fade" cx="212" cy="150" r="5" fill="rgb(var(--amber))" stroke="none" />
+      <circle className="fade" cx="212" cy="150" r="5" fill="rgb(var(--support))" stroke="none" />
       {D('M218 8 V282', { strokeDasharray: 'none', strokeOpacity: 0.5 })}
       {D('M218 282 L210 298 H226 Z')}
       {D('M60 290 H340')}
@@ -124,7 +124,7 @@ export function FlutedArt({ className = '' }: { className?: string }) {
           {D(`M${x + 7} 64 V256`, { strokeOpacity: 0.35 })}
         </g>
       ))}
-      {D('M30 190 C90 90, 150 90, 200 160 S310 240, 372 110', { stroke: 'rgb(var(--amber))', strokeWidth: 2.4 })}
+      {D('M30 190 C90 90, 150 90, 200 160 S310 240, 372 110', { stroke: 'rgb(var(--support))', strokeWidth: 2.4 })}
       {D('M30 214 C90 114, 150 114, 200 184 S310 264, 372 134', { strokeOpacity: 0.4 })}
     </DrawSVG>
   )
@@ -155,9 +155,9 @@ export function MissionArt({ className = '' }: { className?: string }) {
           {D(d)}
         </g>
       ))}
-      {D('M8 238 L110 244 L190 252 L270 256 L350 262 L490 268 L592 266', { stroke: 'rgb(var(--amber))', strokeWidth: 3 })}
-      {D('M250 250 L276 150', { strokeOpacity: 0.55, stroke: 'rgb(var(--amber))' })}
-      {D('M410 262 L440 360', { strokeOpacity: 0.55, stroke: 'rgb(var(--amber))' })}
+      {D('M8 238 L110 244 L190 252 L270 256 L350 262 L490 268 L592 266', { stroke: 'rgb(var(--support))', strokeWidth: 3 })}
+      {D('M250 250 L276 150', { strokeOpacity: 0.55, stroke: 'rgb(var(--support))' })}
+      {D('M410 262 L440 360', { strokeOpacity: 0.55, stroke: 'rgb(var(--support))' })}
       {D('M40 450 H560', { strokeOpacity: 0.4 })}
     </DrawSVG>
   )
@@ -176,9 +176,9 @@ export function VisionArt({ className = '' }: { className?: string }) {
   )
   return (
     <DrawSVG viewBox="0 0 600 500" className={className}>
-      <circle className="fade" cx="440" cy="150" r="62" fill="rgb(var(--amber) / 0.4)" stroke="none" />
-      {D('M440 88 A62 62 0 1 1 439.9 88', { stroke: 'rgb(var(--amber))', strokeWidth: 2.4 })}
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => <g key={i}>{D(`M${440 + Math.cos(Math.PI * (0.05 + i * 0.15)) * -84} ${150 - Math.sin(Math.PI * (0.05 + i * 0.15)) * 84} L${440 + Math.cos(Math.PI * (0.05 + i * 0.15)) * -118} ${150 - Math.sin(Math.PI * (0.05 + i * 0.15)) * 118}`, { stroke: 'rgb(var(--amber))', strokeOpacity: 0.6 })}</g>)}
+      <circle className="fade" cx="440" cy="150" r="62" fill="rgb(var(--support) / 0.4)" stroke="none" />
+      {D('M440 88 A62 62 0 1 1 439.9 88', { stroke: 'rgb(var(--support))', strokeWidth: 2.4 })}
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => <g key={i}>{D(`M${440 + Math.cos(Math.PI * (0.05 + i * 0.15)) * -84} ${150 - Math.sin(Math.PI * (0.05 + i * 0.15)) * 84} L${440 + Math.cos(Math.PI * (0.05 + i * 0.15)) * -118} ${150 - Math.sin(Math.PI * (0.05 + i * 0.15)) * 118}`, { stroke: 'rgb(var(--support))', strokeOpacity: 0.6 })}</g>)}
       {tower(70, 110, 190, 0)}
       {tower(210, 130, 90, 1)}
       {tower(370, 100, 250, 2)}
@@ -203,7 +203,7 @@ export function HeritageArt({ className = '' }: { className?: string }) {
       {slab(350, 0)}
       {slab(250, 1)}
       {slab(150, 2)}
-      {D('M300 80 V20 M284 36 L300 20 L316 36', { stroke: 'rgb(var(--amber))', strokeWidth: 2.2 })}
+      {D('M300 80 V20 M284 36 L300 20 L316 36', { stroke: 'rgb(var(--support))', strokeWidth: 2.2 })}
     </DrawSVG>
   )
 }
@@ -219,8 +219,8 @@ export function ArchArt({ className = '' }: { className?: string }) {
       {D('M210 70 V480', { strokeOpacity: 0.55 })}
       {D('M70 290 H350', { strokeOpacity: 0.55 })}
       {D('M30 480 H390')}
-      {D('M150 150 L190 100', { stroke: 'rgb(var(--amber))', strokeWidth: 2.4 })}
-      {D('M164 176 L214 112', { stroke: 'rgb(var(--amber))', strokeOpacity: 0.55 })}
+      {D('M150 150 L190 100', { stroke: 'rgb(var(--support))', strokeWidth: 2.4 })}
+      {D('M164 176 L214 112', { stroke: 'rgb(var(--support))', strokeOpacity: 0.55 })}
     </DrawSVG>
   )
 }

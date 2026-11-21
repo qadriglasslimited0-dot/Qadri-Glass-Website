@@ -20,7 +20,7 @@ export default {
         mint: v('accent2'),
         forest: '#1A5A33',
         brand: v('brand'),
-        amber: v('amber'),
+        support: v('support'),
         pale: v('pale'),
       },
       fontFamily: {

@@ -22,14 +22,14 @@ export default function ProjectCard({ p, index, className = '', size = 'md' }: {
             <GlassPlaceholder index={index} label={p.pending ? 'Photography pending' : p.name} />
           </div>
         )}
-        <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#081e14]/85 via-[#081e14]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#14452c]/85 via-[#14452c]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <span className="pointer-events-none absolute bottom-4 left-5 z-20 translate-y-3 text-sm font-bold text-[#ffffff] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           View project
         </span>
-        <span className="absolute bottom-3 right-3 z-20 grid h-12 w-12 place-items-center rounded-full bg-[#ffffff] text-[#0d2619] shadow-lg transition-all duration-500 group-hover:bg-[rgb(var(--amber))] group-hover:rotate-45">
+        <span className="absolute bottom-3 right-3 z-20 grid h-12 w-12 place-items-center rounded-full bg-[#ffffff] text-[#0d2619] shadow-lg transition-all duration-500 group-hover:bg-[rgb(var(--support))] group-hover:rotate-45">
           <ArrowUpRight size={18} />
         </span>
-        <span className="absolute left-0 top-0 z-20 bg-[rgb(var(--amber))] px-3.5 py-2 font-display text-sm font-extrabold tabular-nums text-[#0d2619]">{String(index + 1).padStart(2, '0')}</span>
+        <span className="absolute left-0 top-0 z-20 bg-[rgb(var(--support))] px-3.5 py-2 font-display text-sm font-extrabold tabular-nums text-[#0d2619]">{String(index + 1).padStart(2, '0')}</span>
       </Link>
 
       <div className="mt-5">

@@ -1,10 +1,9 @@
 import { useRef, type ReactNode } from 'react'
 import { TIMELINE } from '../lib/content'
-import { useSite } from '../lib/api'
 import Split from '../components/Split'
 import ScrollPath from '../components/ScrollPath'
-import { Reveal, MaskImage } from '../components/Reveal'
-import { FabricationArt, MissionArt, FacadeArt } from '../components/Graphics'
+import { Reveal } from '../components/Reveal'
+import { FoundationGlass, EvolutionGlass, CurtainGlass, TodayGlass } from '../components/glass/StoryGlass'
 
 /**
  * Our story: one continuous line is drawn down the page as you read, passing through each chapter.
@@ -12,19 +11,12 @@ import { FabricationArt, MissionArt, FacadeArt } from '../components/Graphics'
  */
 export default function Story() {
   const root = useRef<HTMLDivElement>(null)
-  const { projects } = useSite()
-  const todayPhoto = projects.find((p) => p.images[0])?.images[0]
-
-  const art = 'h-auto w-full max-w-[460px] text-[rgb(var(--brand))]'
+  const big = 'h-auto w-full'
   const visuals: ReactNode[] = [
-    <FabricationArt key="v1" className={art} />,
-    <MissionArt key="v2" className={art} />,
-    <FacadeArt key="v3" className={art} />,
-    todayPhoto ? (
-      <MaskImage key="v4" src={todayPhoto} alt="Qadri Glass project today" natural className="w-full max-w-[400px] shadow-[0_40px_80px_-40px_rgba(13,38,25,0.45)]" />
-    ) : (
-      <FacadeArt key="v4" className={art} />
-    ),
+    <FoundationGlass key="v1" className={big} />,
+    <EvolutionGlass key="v2" className={big} />,
+    <CurtainGlass key="v3" className={big} />,
+    <TodayGlass key="v4" className="h-auto w-full" />,
   ]
 
   return (
@@ -47,7 +39,7 @@ export default function Story() {
                   <div
                     data-node
                     data-on="false"
-                    className="group col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rotate-45 border-2 border-[rgb(var(--brand))] bg-ink transition-[background,transform,box-shadow] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--amber))] data-[on=true]:bg-[rgb(var(--amber))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--amber)/0.2)] md:col-start-2 md:mx-auto md:h-14 md:w-14 md:self-center"
+                    className="group col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rotate-45 border-2 border-[rgb(var(--brand))] bg-ink transition-[background,transform,box-shadow] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--support))] data-[on=true]:bg-[rgb(var(--support))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--support)/0.2)] md:col-start-2 md:mx-auto md:h-14 md:w-14 md:self-center"
                   >
                     <span className="-rotate-45 text-xs font-extrabold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                   </div>
@@ -67,7 +59,7 @@ export default function Story() {
                     <p className={`lead mt-3 max-w-[40ch] ${even ? 'md:ml-auto' : ''}`}>{c.text}</p>
                   </Reveal>
 
-                  <Reveal className={`col-start-2 row-start-2 md:row-start-1 ${even ? 'md:col-start-3' : 'md:col-start-1 md:justify-self-end'}`} y={50}>
+                  <Reveal className={`col-start-2 row-start-2 md:row-start-1 ${even ? 'md:col-start-3' : 'md:col-start-1'}`} y={50}>
                     {visuals[i]}
                   </Reveal>
                 </li>

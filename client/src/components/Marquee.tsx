@@ -8,7 +8,7 @@ const ROW_B = ['The art of transparency', 'Built on experience', 'Glass, made to
 /** A small glass pane used as the separator between phrases. */
 function Pane() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 40 52" className="mx-8 h-[0.62em] w-auto shrink-0 text-[rgb(var(--amber))] sm:mx-12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round">
+    <svg aria-hidden="true" viewBox="0 0 40 52" className="mx-8 h-[0.62em] w-auto shrink-0 text-[rgb(var(--support))] sm:mx-12" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round">
       <path d="M6 48 L14 6 H38 L30 48 Z" fill="currentColor" fillOpacity="0.22" />
       <path d="M17 38 L22 14" strokeLinecap="round" strokeOpacity="0.7" />
     </svg>

@@ -39,7 +39,7 @@ export default function ServicesStage() {
                   <span
                     data-node
                     data-on="false"
-                    className="col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rounded-full border-2 border-[rgb(var(--brand))] bg-coal text-xs font-extrabold tabular-nums transition-[background,transform,box-shadow,color] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--amber))] data-[on=true]:bg-[rgb(var(--amber))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--amber)/0.22)] md:col-start-2 md:mx-auto md:h-[60px] md:w-[60px] md:self-center md:text-sm"
+                    className="col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rounded-full border-2 border-[rgb(var(--brand))] bg-coal text-xs font-extrabold tabular-nums transition-[background,transform,box-shadow,color] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--support))] data-[on=true]:bg-[rgb(var(--support))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--support)/0.22)] md:col-start-2 md:mx-auto md:h-[60px] md:w-[60px] md:self-center md:text-sm"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -75,7 +75,7 @@ export default function ServicesStage() {
                           </div>
                         </>
                       ) : (
-                        <div className="theme-deep relative aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[linear-gradient(160deg,#0f3a24,#081e14)] p-[8%] shadow-[0_40px_80px_-40px_rgba(8,30,20,0.7)]">
+                        <div className="theme-deep relative aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[linear-gradient(160deg,#2d8559,#1b5d3b)] p-[8%] shadow-[0_40px_80px_-40px_rgba(8,30,20,0.7)]">
                           <div aria-hidden="true" className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.08) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
                           <Art className="relative h-full w-full text-[rgb(var(--accent))] transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
                         </div>

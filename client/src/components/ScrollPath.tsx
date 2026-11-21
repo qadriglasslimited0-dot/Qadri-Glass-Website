@@ -11,7 +11,7 @@ import { reducedMotion } from '../lib/gsap'
  */
 export default function ScrollPath({
   container,
-  color = 'rgb(var(--amber))',
+  color = 'rgb(var(--support))',
   width = 3,
   sway = 70,
   track = true,

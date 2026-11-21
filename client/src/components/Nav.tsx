@@ -154,7 +154,7 @@ export default function Nav() {
                       to={n.to}
                       end={n.to === '/'}
                       className={({ isActive }) =>
-                        `flex items-baseline gap-4 py-1.5 font-display text-[clamp(2.2rem,11vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight ${isActive ? 'text-[rgb(var(--amber))]' : 'text-white'}`
+                        `flex items-baseline gap-4 py-1.5 font-display text-[clamp(2.2rem,11vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight ${isActive ? 'text-[rgb(var(--support))]' : 'text-white'}`
                       }
                     >
                       <span className="font-sans text-xs font-bold tracking-[0.2em] text-azure">0{i + 1}</span>

@@ -7,7 +7,7 @@ import Logo from './Logo'
 export default function Footer() {
   const C = useCompany()
   return (
-    <footer className="theme-deep relative overflow-hidden border-t border-white/10 bg-[#061a11] text-white">
+    <footer className="theme-deep relative overflow-hidden border-t border-white/10 bg-[rgb(var(--bg))] text-white">
       <div aria-hidden="true" className="pointer-events-none absolute -left-[10%] bottom-[-30%] h-[60vmax] w-[60vmax] rounded-full" style={{ background: 'radial-gradient(circle, rgb(var(--mintc) / 0.10), transparent 62%)' }} />
       <div className="wrap relative grid gap-14 pb-14 pt-20 md:grid-cols-12">
         <div className="md:col-span-5">
@@ -61,7 +61,7 @@ export default function Footer() {
               href={COMPANY.developerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:border-[rgb(var(--amber))] hover:bg-[rgb(var(--amber))] hover:text-[#0d2619]"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-[13px] font-bold text-white transition-colors hover:border-[rgb(var(--support))] hover:bg-[rgb(var(--support))] hover:text-[#0d2619]"
             >
               Powered by {COMPANY.developer}
               <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

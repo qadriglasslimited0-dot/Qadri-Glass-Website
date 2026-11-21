@@ -13,7 +13,7 @@ const PRESETS: P[] = [
   { mouth: 128, fill: 0, ry: 7, ey: 93, bo: 77, bi: 68, tear: 0, cheek: 0, spark: 0, r: 210, g: 218, b: 228 },
   { mouth: 144, fill: 0, ry: 7, ey: 92, bo: 72, bi: 72, tear: 0, cheek: 0, spark: 0, r: 238, g: 240, b: 232 },
   { mouth: 168, fill: 0, ry: 7, ey: 91, bo: 68, bi: 66, tear: 0, cheek: 0.7, spark: 0, r: 190, g: 232, b: 208 },
-  { mouth: 196, fill: 1, ry: 3.4, ey: 90, bo: 60, bi: 58, tear: 0, cheek: 1, spark: 1, r: 255, g: 222, b: 150 },
+  { mouth: 196, fill: 1, ry: 3.4, ey: 90, bo: 60, bi: 58, tear: 0, cheek: 1, spark: 1, r: 224, g: 249, b: 237 },
 ]
 
 export default function FaceRating({ value, className = '' }: { value: number; className?: string }) {
@@ -53,8 +53,11 @@ export default function FaceRating({ value, className = '' }: { value: number; c
       return
     }
     const tw = gsap.to(p.current, { ...target, duration: 0.6, ease: 'back.out(1.4)', onUpdate: apply, overwrite: true })
+    // a small settle of the whole head each time the expression changes
+    const nod = ref.current ? gsap.fromTo(ref.current, { rotation: value % 2 ? -5 : 5, scale: 0.95 }, { rotation: 0, scale: 1, duration: 0.8, ease: 'elastic.out(1, 0.5)', overwrite: 'auto' }) : null
     return () => {
       tw.kill()
+      nod?.kill()
     }
   }, [value])
 
@@ -88,8 +91,8 @@ export default function FaceRating({ value, className = '' }: { value: number; c
       <ellipse data-tear cx="58" cy="114" rx="4.5" ry="7" fill="#6ec1ff" opacity="0" />
       <path data-mouth-fill d="M62 142 Q100 146 138 142 Z" fill="#0d2619" fillOpacity="0" stroke="none" />
       <path data-mouth d="M62 142 Q100 146 138 142" stroke="#0d2619" strokeWidth="5" strokeLinecap="round" fill="none" />
-      <path data-spark data-at="translate(22 54)" d={spark} fill="rgb(242 160 61)" opacity="0" transform="translate(22 54) scale(0.4)" />
-      <path data-spark data-at="translate(182 70)" d={spark} fill="rgb(242 160 61)" opacity="0" transform="translate(182 70) scale(0.4)" />
+      <path data-spark data-at="translate(22 54)" d={spark} fill="rgb(129 208 172)" opacity="0" transform="translate(22 54) scale(0.4)" />
+      <path data-spark data-at="translate(182 70)" d={spark} fill="rgb(129 208 172)" opacity="0" transform="translate(182 70) scale(0.4)" />
       <path data-spark data-at="translate(164 14)" d={spark} fill="rgb(129 208 172)" opacity="0" transform="translate(164 14) scale(0.4)" />
     </svg>
   )
