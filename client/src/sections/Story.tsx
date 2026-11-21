@@ -1,113 +1,79 @@
-import { useRef } from 'react'
-import { gsap } from '../lib/gsap'
+import { useRef, type ReactNode } from 'react'
 import { TIMELINE } from '../lib/content'
-import { useMotion } from '../hooks/useMotion'
+import { useSite } from '../lib/api'
 import Split from '../components/Split'
+import ScrollPath from '../components/ScrollPath'
+import { Reveal, MaskImage } from '../components/Reveal'
+import { FabricationArt, MissionArt, FacadeArt } from '../components/Graphics'
 
 /**
- * Pinned cinematic timeline on desktop (scrubbed, one chapter at a time).
- * On tablet / mobile it becomes a vertical story with per-chapter reveals — no pin.
+ * Our story: one continuous line is drawn down the page as you read, passing through each chapter.
+ * No pinning and no scroll-jacking: the page scrolls exactly as normal.
  */
 export default function Story() {
-  const root = useRef<HTMLElement>(null)
+  const root = useRef<HTMLDivElement>(null)
+  const { projects } = useSite()
+  const todayPhoto = projects.find((p) => p.images[0])?.images[0]
 
-  useMotion(root, ({ reduced, desktop }) => {
-    const el = root.current!
-    const q = gsap.utils.selector(el)
-    const chapters = q('[data-ch]')
-    const marks = q('[data-mark]')
-    const ticks = q('[data-tick]')
-    if (reduced) return
-
-    if (desktop) {
-      gsap.set(chapters.slice(1), { opacity: 0, y: 50, pointerEvents: 'none' })
-      gsap.set(marks.slice(1), { yPercent: 100 })
-      gsap.set(q('[data-fill]'), { scaleX: 0 })
-      const tl = gsap.timeline({
-        defaults: { ease: 'power2.inOut' },
-        scrollTrigger: {
-          trigger: q('[data-pin]')[0],
-          start: 'top top',
-          end: '+=320%',
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      })
-      tl.to(q('[data-fill]'), { scaleX: 1, duration: chapters.length - 1, ease: 'none' }, 0)
-      chapters.forEach((_, i) => {
-        if (i === 0) {
-          tl.to(ticks[0], { opacity: 1, duration: 0.01 }, 0)
-          return
-        }
-        const at = i - 0.65
-        tl.to(chapters[i - 1], { opacity: 0, y: -40, duration: 0.25, pointerEvents: 'none' }, at)
-          .to(marks[i - 1], { yPercent: -100, duration: 0.3 }, at)
-          .fromTo(marks[i], { yPercent: 100 }, { yPercent: 0, duration: 0.3 }, at + 0.25)
-          .to(chapters[i], { opacity: 1, y: 0, duration: 0.3, pointerEvents: 'auto' }, at + 0.3)
-          .to(ticks[i], { opacity: 1, duration: 0.2 }, at + 0.3)
-      })
-      tl.to({}, { duration: 0.5 }) // hold the final chapter
-    } else {
-      chapters.forEach((c) => {
-        gsap.from(c, { opacity: 0, y: 48, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 85%', once: true } })
-      })
-      gsap.from(q('[data-vline]'), { scaleY: 0, transformOrigin: 'top', ease: 'none', scrollTrigger: { trigger: q('[data-chapters]')[0], start: 'top 70%', end: 'bottom 70%', scrub: true } })
-    }
-  })
+  const art = 'h-auto w-full max-w-[460px] text-[rgb(var(--brand))]'
+  const visuals: ReactNode[] = [
+    <FabricationArt key="v1" className={art} />,
+    <MissionArt key="v2" className={art} />,
+    <FacadeArt key="v3" className={art} />,
+    todayPhoto ? (
+      <MaskImage key="v4" src={todayPhoto} alt="Qadri Glass project today" natural className="w-full max-w-[400px] shadow-[0_40px_80px_-40px_rgba(13,38,25,0.45)]" />
+    ) : (
+      <FacadeArt key="v4" className={art} />
+    ),
+  ]
 
   return (
-    <section ref={root} id="story" data-section="Story" className="relative bg-coal">
-      <div data-pin className="relative flex flex-col overflow-hidden py-24 lg:h-[100svh] lg:min-h-[640px] lg:py-0">
-        <div className="wrap pt-0 lg:pt-[clamp(88px,13svh,130px)]">
-          <p className="eyebrow mb-5">Our story — since 1960</p>
-          <h2 className="display max-w-[18ch] text-[clamp(1.8rem,min(4vw,7svh),4rem)]">
-            <Split text={'THREE GENERATIONS.\nONE STANDARD OF _EXCELLENCE._'} when="ready" />
+    <section id="story" data-section="Story" className="relative overflow-hidden bg-ink section">
+      <div className="wrap">
+        <div className="mb-[clamp(56px,8vw,120px)] max-w-[1100px]">
+          <p className="eyebrow mb-6">Our story · since 1960</p>
+          <h2 className="display text-[clamp(2.4rem,6.2vw,6.4rem)]">
+            <Split text={'Three generations.\nOne standard of _excellence._'} />
           </h2>
         </div>
 
-        <div className="wrap relative mt-14 flex-1 lg:mt-0" data-chapters>
-          <span data-vline className="absolute bottom-0 left-[var(--gutter)] top-0 ml-0 w-px bg-white/15 lg:hidden" aria-hidden="true" />
-          <div className="relative grid grid-cols-[minmax(0,1fr)] gap-16 pl-8 lg:block lg:h-full lg:pl-0">
-            {TIMELINE.map((c, i) => (
-              <article key={c.title} data-ch className="min-w-0 lg:absolute lg:inset-0 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
-                <div className="mb-5 flex items-baseline gap-4 lg:col-span-7 lg:mb-0 lg:block">
-                  {/* Large mark — masked reveal on desktop */}
-                  <div className="overflow-hidden lg:h-[clamp(4rem,min(8vw,22svh),9rem)]">
-                    <div
-                      data-mark
-                      className="text-gradient font-extrabold uppercase leading-[0.9] tracking-tighter text-[clamp(2rem,10.5vw,4rem)] lg:text-[clamp(3rem,min(5.8vw,18svh),7rem)]"
-                      aria-hidden="true"
-                    >
-                      {c.mark}
-                    </div>
+        <div ref={root} data-chapters className="relative text-[rgb(var(--fg))]">
+          <ScrollPath container={root} />
+          <ol className="relative z-10 grid gap-y-[clamp(72px,10vw,150px)]">
+            {TIMELINE.map((c, i) => {
+              const even = i % 2 === 0
+              return (
+                <li key={c.title} className="grid grid-cols-[44px_1fr] items-center gap-x-5 gap-y-8 md:grid-cols-[1fr_96px_1fr] md:gap-x-10">
+                  <div
+                    data-node
+                    data-on="false"
+                    className="group col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rotate-45 border-2 border-[rgb(var(--brand))] bg-ink transition-[background,transform,box-shadow] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--amber))] data-[on=true]:bg-[rgb(var(--amber))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--amber)/0.2)] md:col-start-2 md:mx-auto md:h-14 md:w-14 md:self-center"
+                  >
+                    <span className="-rotate-45 text-xs font-extrabold tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                   </div>
-                </div>
-                <div className="lg:col-span-5">
-                  <p className="eyebrow mb-4 !text-azure">
-                    0{i + 1} / 0{TIMELINE.length}
-                  </p>
-                  <h3 className="text-[clamp(1.6rem,2.6vw,2.6rem)] font-light leading-tight">{c.title}</h3>
-                  <p className="lead mt-4 max-w-[42ch]">{c.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
 
-        {/* progress rail (desktop) */}
-        <div className="wrap hidden pb-10 pt-6 lg:block">
-          <div className="relative h-px bg-white/15">
-            <div data-fill className="absolute inset-0 origin-left bg-gradient-to-r from-azure to-white" />
-            <div className="absolute inset-x-0 -top-1 flex justify-between">
-              {TIMELINE.map((c, i) => (
-                <span key={c.title} data-tick className={`font-wide text-[8px] uppercase tracking-[0.3em] ${i === 0 ? '' : 'opacity-40'}`} style={{ transform: 'translateY(14px)' }}>
-                  {c.title}
-                </span>
-              ))}
-            </div>
-          </div>
+                  <Reveal className={`col-start-2 row-start-1 md:row-start-1 ${even ? 'md:col-start-1 md:text-right' : 'md:col-start-3'}`}>
+                    {/^\d+$/.test(c.mark) ? (
+                      <>
+                        <p className="display text-[clamp(3rem,7.4vw,7.4rem)] text-[rgb(var(--brand))]">{c.mark}</p>
+                        <h3 className="mt-3 font-display text-xl font-bold sm:text-2xl">{c.title}</h3>
+                      </>
+                    ) : (
+                      <>
+                        <p className={`eyebrow mb-3 !text-azure ${even ? 'md:flex-row-reverse' : ''}`}>{c.mark}</p>
+                        <h3 className="display text-[clamp(2.2rem,4.8vw,4.8rem)]">{c.title}</h3>
+                      </>
+                    )}
+                    <p className={`lead mt-3 max-w-[40ch] ${even ? 'md:ml-auto' : ''}`}>{c.text}</p>
+                  </Reveal>
+
+                  <Reveal className={`col-start-2 row-start-2 md:row-start-1 ${even ? 'md:col-start-3' : 'md:col-start-1 md:justify-self-end'}`} y={50}>
+                    {visuals[i]}
+                  </Reveal>
+                </li>
+              )
+            })}
+          </ol>
         </div>
       </div>
     </section>

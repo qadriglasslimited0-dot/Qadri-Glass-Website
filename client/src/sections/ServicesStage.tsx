@@ -1,89 +1,91 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
-import { gsap } from '../lib/gsap'
+import { ArrowRight } from 'lucide-react'
 import { useSite } from '../lib/api'
-import { useMotion } from '../hooks/useMotion'
-import ServiceVisual from '../components/ServiceVisual'
 import Split from '../components/Split'
+import ScrollPath from '../components/ScrollPath'
+import { Reveal, MaskImage } from '../components/Reveal'
+import { FacadeArt, SERVICE_ART } from '../components/Graphics'
 
 /**
- * Full-screen pinned showcase.
- * Motion budget: transform + opacity only (compositor-friendly) — no clip-path, blur, or filter animation.
- * Desktop: each service slides its glass visual up over the previous one while the copy swaps.
- * Mobile: plain stacked cards.
+ * What we do. One amber line travels down the whole section, drawing itself as you scroll and
+ * stopping at each service. Each service pairs its own illustration with its photograph when one exists.
+ * No pinning: normal scrolling throughout.
  */
 export default function ServicesStage() {
-  const root = useRef<HTMLElement>(null)
-  const { services } = useSite()
-
-  useMotion(
-    root,
-    ({ reduced, desktop }) => {
-      const el = root.current!
-      const q = gsap.utils.selector(el)
-      const texts = q('[data-s]')
-      const visuals = q('[data-v]')
-      if (reduced) return
-
-      if (!desktop) {
-        texts.forEach((t, i) => gsap.from([t, visuals[i]], { opacity: 0, y: 40, duration: 1, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: t, start: 'top 88%', once: true } }))
-        return
-      }
-      gsap.set(texts.slice(1), { autoAlpha: 0, y: 40 })
-      gsap.set(visuals.slice(1), { yPercent: 200, force3D: true })
-      gsap.set(q('[data-fill]'), { scaleY: 0 })
-
-      const steps = services.length - 1
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: { trigger: q('[data-pin]')[0], start: 'top top', end: () => `+=${services.length * 85}%`, scrub: true, pin: true, anticipatePin: 1, invalidateOnRefresh: true },
-      })
-      tl.to(q('[data-fill]'), { scaleY: 1, duration: steps }, 0)
-      texts.forEach((_, i) => {
-        if (i === 0) return
-        const at = i - 0.7
-        tl.to(texts[i - 1], { autoAlpha: 0, y: -40, duration: 0.3 }, at)
-          .to(visuals[i], { yPercent: 0, duration: 0.7, ease: 'power2.inOut' }, at)
-          .to(visuals[i - 1], { yPercent: -6, duration: 0.7, ease: 'power2.inOut' }, at)
-          .to(texts[i], { autoAlpha: 1, y: 0, duration: 0.3 }, at + 0.45)
-      })
-      tl.to({}, { duration: 0.3 })
-    },
-    [services.length],
-  )
+  const root = useRef<HTMLDivElement>(null)
+  const { services, site } = useSite()
 
   return (
-    <section ref={root} data-section="Services" className="relative bg-ink">
-      <div data-pin className="relative lg:flex lg:h-[100svh] lg:min-h-[640px] lg:flex-col lg:justify-center lg:overflow-hidden">
-        <div className="wrap pt-[var(--section)] lg:pt-0">
-          <p className="eyebrow mb-5">What we do</p>
-          <h2 className="display max-w-[18ch] text-[clamp(2rem,min(5.2vw,8.5svh),5rem)]">
-            <Split text={'Four ways we work _with glass._'} when="ready" />
+    <section data-section="Services" id="services-home" className="relative overflow-hidden bg-coal section">
+      <div className="wrap">
+        <div className="mb-[clamp(56px,8vw,120px)] max-w-[1100px]">
+          <p className="eyebrow mb-6">What we do</p>
+          <h2 className="display text-[clamp(2.4rem,6.2vw,6.4rem)]">
+            <Split text={'Four ways we work with _glass._'} />
           </h2>
         </div>
 
-        <div className="wrap relative mt-14 grid gap-y-20 pb-[var(--section)] lg:mt-[4svh] lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0 lg:pb-0">
-          {services.map((s, i) => (
-            <article key={s.slug} className="contents">
-              <div data-v className="aspect-[4/3] shadow-[0_30px_70px_-40px_rgba(29,92,56,0.5)] lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:aspect-auto lg:h-[56svh]" style={{ zIndex: i + 1 }}>
-                <ServiceVisual slug={s.slug} alt={s.title} seed={i} lite />
-              </div>
-              <div data-s className="flex flex-col justify-center lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:h-[56svh]">
-                <span className="font-wide text-[11px] tracking-[0.3em] text-azure">0{i + 1} / 0{services.length}</span>
-                <h3 className="mt-5 text-[clamp(2rem,min(3.9vw,7svh),4.2rem)] font-extrabold uppercase leading-[1] tracking-tighter">{s.title}</h3>
-                <p className="eyebrow mt-4">{s.kicker}</p>
-                <p className="lead mt-6 max-w-[40ch]">{s.summary}</p>
-                <Link to={`/services/${s.slug}`} data-cursor="" className="btn mt-9 w-fit">
-                  Explore <ArrowUpRight size={14} className="arrow" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+        <div ref={root} className="relative">
+          <ScrollPath container={root} width={4} sway={120} />
+          <ul className="relative z-10 grid gap-y-[clamp(80px,11vw,170px)]">
+            {services.map((s, i) => {
+              const flip = i % 2 === 1
+              const Art = SERVICE_ART[s.slug] ?? FacadeArt
+              const photo = site[`image.service.${s.slug}`]
+              const [first, ...rest] = s.title.split(' ')
+              return (
+                <li key={s.slug} data-hover-draw className="group grid grid-cols-[44px_1fr] items-center gap-x-5 gap-y-8 md:grid-cols-[1fr_80px_1fr] md:gap-x-12">
+                  <span
+                    data-node
+                    data-on="false"
+                    className="col-start-1 row-start-1 grid h-11 w-11 place-items-center self-start rounded-full border-2 border-[rgb(var(--brand))] bg-coal text-xs font-extrabold tabular-nums transition-[background,transform,box-shadow,color] duration-500 data-[on=true]:scale-110 data-[on=true]:border-[rgb(var(--amber))] data-[on=true]:bg-[rgb(var(--amber))] data-[on=true]:shadow-[0_0_0_8px_rgb(var(--amber)/0.22)] md:col-start-2 md:mx-auto md:h-[60px] md:w-[60px] md:self-center md:text-sm"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
 
-        <div className="absolute bottom-10 left-[var(--gutter)] hidden h-24 w-px bg-[rgb(var(--fg)/0.15)] lg:block" aria-hidden="true">
-          <div data-fill className="h-full w-full origin-top bg-azure" />
+                  <Reveal className={`col-start-2 row-start-1 ${flip ? 'md:col-start-3' : 'md:col-start-1 md:text-right'}`}>
+                    <p className="eyebrow mb-4 before:hidden md:before:block">{s.kicker}</p>
+                    <h3 className="display text-[clamp(2.4rem,5.4vw,5.6rem)]">
+                      <span className="block">{first}</span>
+                      {rest.length > 0 && <span className="block font-light text-[rgb(var(--accent))]">{rest.join(' ')}</span>}
+                    </h3>
+                    <p className={`lead mt-5 max-w-[42ch] ${flip ? '' : 'md:ml-auto'}`}>{s.summary}</p>
+                    {s.applications.length > 0 && (
+                      <ul className={`mt-6 flex flex-wrap gap-2 ${flip ? '' : 'md:justify-end'}`}>
+                        {s.applications.slice(0, 4).map((a) => (
+                          <li key={a} className="rounded-full border border-[rgb(var(--fg)/0.22)] px-3.5 py-1.5 text-[13px] font-semibold text-silver">
+                            {a}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <Link to={`/services/${s.slug}`} className="btn btn-solid mt-8">
+                      Explore service <ArrowRight size={16} className="arrow" />
+                    </Link>
+                  </Reveal>
+
+                  <Reveal className={`col-start-2 row-start-2 md:row-start-1 ${flip ? 'md:col-start-1' : 'md:col-start-3'}`} y={56}>
+                    <div className="relative">
+                      {photo ? (
+                        <>
+                          <MaskImage src={photo} alt={s.title} parallax className="aspect-[4/3] w-full shadow-[0_40px_80px_-40px_rgba(13,38,25,0.5)]" />
+                          <div className="theme-deep absolute -bottom-6 -left-4 w-[42%] rounded-2xl bg-ink p-4 shadow-xl md:-left-8">
+                            <Art className="h-auto w-full text-[rgb(var(--accent))]" />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="theme-deep relative aspect-[4/3] w-full overflow-hidden rounded-[24px] bg-[linear-gradient(160deg,#0f3a24,#081e14)] p-[8%] shadow-[0_40px_80px_-40px_rgba(8,30,20,0.7)]">
+                          <div aria-hidden="true" className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.08) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+                          <Art className="relative h-full w-full text-[rgb(var(--accent))] transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+                        </div>
+                      )}
+                    </div>
+                  </Reveal>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </section>

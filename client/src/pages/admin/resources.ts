@@ -89,6 +89,21 @@ export const RESOURCES: Resource[] = [
     ],
   },
   {
+    key: 'reviews',
+    table: 'reviews',
+    label: 'Reviews',
+    titleKey: 'name',
+    bucketFolder: 'reviews',
+    defaults: { rating: 5, status: 'pending' },
+    fields: [
+      { key: 'status', label: 'Status (only "approved" reviews appear on the website)', type: 'select', options: ['pending', 'approved', 'rejected'], required: true },
+      { key: 'name', label: 'Reviewer name', type: 'text', required: true },
+      { key: 'company', label: 'Company', type: 'text' },
+      { key: 'rating', label: 'Rating (1-5)', type: 'number', required: true },
+      { key: 'message', label: 'Review', type: 'textarea', required: true },
+    ],
+  },
+  {
     key: 'site_content',
     table: 'site_content',
     label: 'Website content',

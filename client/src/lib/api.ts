@@ -97,3 +97,37 @@ export async function submitEnquiry(form: FormData): Promise<{ ok: boolean; mess
     return { ok: false, message: 'We could not reach the server. Please try again, or contact us on WhatsApp or by email.' }
   }
 }
+
+/* ---------------------------------- Reviews ---------------------------------- */
+export type Review = { id: string; name: string; company: string | null; rating: number; message: string; created_at: string }
+export type ReviewInput = { name: string; company: string; rating: number; message: string }
+
+/** Approved reviews only (row-level security hides everything else). Empty list if reviews are not set up yet. */
+export async function fetchReviews(): Promise<Review[]> {
+  if (!supabase) return []
+  try {
+    const { data, error } = await supabase.from('reviews').select('id,name,company,rating,message,created_at').eq('status', 'approved').order('created_at', { ascending: false }).limit(12)
+    if (error) return []
+    return (data as Review[]) ?? []
+  } catch {
+    return []
+  }
+}
+
+/**
+ * Stores a review as 'pending' in Supabase (see supabase/reviews.sql). It is never shown publicly until staff approve it.
+ * Returns ok:false with an honest message when the backend is not available, rather than pretending to succeed.
+ */
+export async function submitReview(r: ReviewInput): Promise<{ ok: boolean; message?: string }> {
+  if (!supabase) return { ok: false, message: 'Reviews are not connected on this website yet. Please contact us directly.' }
+  try {
+    const { error } = await supabase.from('reviews').insert({ name: r.name.trim(), company: r.company.trim() || null, rating: r.rating, message: r.message.trim(), status: 'pending' })
+    if (!error) return { ok: true }
+    if (error.code === '42P01' || error.code === 'PGRST205' || /schema cache|does not exist/i.test(error.message)) {
+      return { ok: false, message: 'Reviews have not been switched on for this website yet. Please contact us directly.' }
+    }
+    return { ok: false, message: 'We could not send your review right now. Please try again in a moment.' }
+  } catch {
+    return { ok: false, message: 'We could not reach the server. Please check your connection and try again.' }
+  }
+}

@@ -71,15 +71,15 @@ export default function Nav() {
       <header
         ref={header}
         data-scrolled="false"
-        className="theme-dark fixed inset-x-0 top-0 z-[80] transition-[background,backdrop-filter,border-color] duration-500 data-[scrolled=true]:border-b data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-ink/95"
+        className="fixed inset-x-0 top-0 z-[80] transition-[background,border-color,box-shadow] duration-500 data-[scrolled=true]:bg-ink/95 data-[scrolled=true]:shadow-[0_10px_40px_-24px_rgba(13,38,25,0.4)]"
         style={{ borderBottom: '1px solid transparent' }}
       >
         <div className="wrap flex h-[76px] items-center justify-between">
           <Link to="/" aria-label="Qadri Glass — home" className="relative z-[95] flex items-center gap-3" data-cursor="HOME">
             <Logo variant="mark" className="h-8 w-auto sm:h-9" />
-            <span className="hidden font-wide text-[10px] uppercase tracking-[0.34em] sm:block">
+            <span className="hidden font-display text-[19px] font-extrabold leading-none tracking-[-0.02em] sm:block">
               Qadri Glass
-              <span className="mt-1 block text-[8px] tracking-[0.5em] text-mist">Est. 1960</span>
+              <span className="mt-1.5 block font-sans text-[11px] font-bold uppercase tracking-[0.26em] text-mist">Est. 1960</span>
             </span>
           </Link>
 
@@ -90,7 +90,7 @@ export default function Nav() {
                 to={n.to}
                 end={n.to === '/'}
                 className={({ isActive }) =>
-                  `ulink font-wide text-[9px] uppercase tracking-[0.3em] ${isActive ? 'is-active text-white' : 'text-silver/80 hover:text-white'}`
+                  `ulink text-[14.5px] font-bold tracking-[0.01em] ${isActive ? 'is-active text-white' : 'text-silver hover:text-white'}`
                 }
               >
                 {n.label}
@@ -102,9 +102,9 @@ export default function Nav() {
             <Magnetic className="hidden lg:inline-block" strength={0.25}>
               <Link
                 to="/contact"
-                className="glass glow-azure group flex items-center gap-3 px-6 py-3 font-wide text-[9px] uppercase tracking-[0.3em] transition-colors hover:bg-white hover:text-ink"
+                className="btn btn-solid group !px-6 !py-3 !text-[13.5px]"
               >
-                Contact <ArrowUpRight size={14} className="transition-transform duration-500 group-hover:rotate-45" />
+                Contact <ArrowUpRight size={15} className="transition-transform duration-500 group-hover:rotate-45" />
               </Link>
             </Magnetic>
             <button
@@ -119,7 +119,7 @@ export default function Nav() {
             </button>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-px bg-white/5">
+        <div className="hidden">
           <div data-progress className="h-full origin-left bg-gradient-to-r from-azure to-white" style={{ transform: 'scaleX(0)' }} />
         </div>
       </header>
@@ -131,7 +131,7 @@ export default function Nav() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="theme-dark fixed inset-0 z-[90] flex flex-col bg-ink/95 px-[var(--gutter)] pb-8 pt-28 lg:hidden"
+            className="theme-deep fixed inset-0 z-[90] flex flex-col bg-ink px-[var(--gutter)] pb-8 pt-28 lg:hidden"
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -154,10 +154,10 @@ export default function Nav() {
                       to={n.to}
                       end={n.to === '/'}
                       className={({ isActive }) =>
-                        `flex items-baseline gap-4 py-1.5 text-[clamp(2rem,10vw,3.4rem)] font-extralight uppercase leading-[1.05] tracking-tight ${isActive ? 'text-white' : 'text-silver/60'}`
+                        `flex items-baseline gap-4 py-1.5 font-display text-[clamp(2.2rem,11vw,3.6rem)] font-extrabold leading-[1.05] tracking-tight ${isActive ? 'text-[rgb(var(--amber))]' : 'text-white'}`
                       }
                     >
-                      <span className="font-wide text-[9px] tracking-[0.3em] text-azure">0{i + 1}</span>
+                      <span className="font-sans text-xs font-bold tracking-[0.2em] text-azure">0{i + 1}</span>
                       {n.label}
                     </NavLink>
                   </motion.div>

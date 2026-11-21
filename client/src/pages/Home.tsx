@@ -6,6 +6,7 @@ import ServicesStage from '../sections/ServicesStage'
 import Marquee from '../components/Marquee'
 import ProjectsGallery from '../sections/ProjectsGallery'
 import MissionVision from '../sections/MissionVision'
+import Reviews from '../sections/Reviews'
 import CTA from '../sections/CTA'
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <ServicesStage />
       <ProjectsGallery />
       <MissionVision />
+      <Reviews />
       <CTA />
     </>
   )

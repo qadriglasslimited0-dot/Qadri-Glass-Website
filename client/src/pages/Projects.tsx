@@ -35,9 +35,9 @@ export default function Projects() {
               Verified projects and genuine photography will appear here once supplied by Qadri Glass. No projects or client relationships have been invented — the cards below are labelled placeholders.
             </div>
           )}
-          <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
+          <div className="grid gap-x-10 gap-y-16 md:grid-cols-2 md:gap-y-12">
             {projects.map((p, i) => (
-              <ProjectCard key={p.slug} p={p} index={i} featured={i === 0 && projects.length % 2 === 1} />
+              <ProjectCard key={p.slug} p={p} index={i} size="lg" className={i % 2 === 1 ? 'md:mt-24' : ''} />
             ))}
           </div>
         </div>

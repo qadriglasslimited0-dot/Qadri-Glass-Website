@@ -347,7 +347,7 @@ function Manager({ res }: { res: Resource }) {
   const [msg, setMsg] = useState('')
   const pk = res.table === 'site_content' ? 'key' : 'id'
   const load = useCallback(async () => {
-    const { data, error } = await supabase!.from(res.table).select('*').order(res.table === 'site_content' ? 'key' : 'sort', { ascending: true })
+    const { data, error } = await supabase!.from(res.table).select('*').order(res.table === 'site_content' ? 'key' : res.table === 'reviews' ? 'created_at' : 'sort', { ascending: res.table !== 'reviews' })
     if (error) setMsg(error.message)
     setRows(data ?? [])
   }, [res.table])

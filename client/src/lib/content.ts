@@ -52,6 +52,8 @@ export const COMPANY = {
   email: 'qadriglasslimited0@gmail.com',
   whatsapp: 'https://wa.me/923008434320',
   developer: 'FRX Technologies',
+  // One place to change when the official FRX domain goes live: the footer credit reads this value only.
+  developerUrl: 'https://frx-technologies-new-web.vercel.app/',
 }
 
 export const NAV = [

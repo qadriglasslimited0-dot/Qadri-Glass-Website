@@ -45,3 +45,13 @@ Nothing in this codebase invents certificates, awards, offices, facilities, clie
 - Pinned storytelling and horizontal galleries run on desktop only; tablet/mobile get native-feeling stacked or snap-scroll layouts.
 - `prefers-reduced-motion` disables pins, scrubs, parallax, loops, the curtain transition and smooth-scroll easing.
 - 3D (hero + material lab) is code-split, paused off-screen, and lighter on mobile; WebGL failure falls back to a CSS glass gradient.
+
+## Customer reviews (one-time setup)
+The website has a review form (stars, animated face, live preview). Submissions are stored as **pending** and only
+**approved** reviews are shown. To switch it on, run `supabase/reviews.sql` once in the Supabase SQL editor, then
+approve reviews in the admin dashboard (Reviews tab: set Status to "approved"). Until the table exists the form shows an
+honest "not switched on yet" message instead of pretending to submit.
+
+## Footer credit
+The "Powered by FRX Technologies" link reads `COMPANY.developer` and `COMPANY.developerUrl` in `client/src/lib/content.ts`.
+Change the URL there once the official FRX domain is live.
