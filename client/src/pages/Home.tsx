@@ -1,4 +1,5 @@
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import Hero from '../sections/Hero'
 import Story from '../sections/Story'
 import Stats from '../sections/Stats'
@@ -13,11 +14,7 @@ import { GlassDefs } from '../components/glass/kit'
 export default function Home() {
   return (
     <>
-      <Seo
-        title="Qadri Glass — The Art of Transparency | Architectural Glass, Lahore"
-        description="Qadri Glass Pvt. Ltd. — established 1960 in Lahore. Import, supply, fabrication and installation of architectural and decorative glass for architects, interior designers and developers."
-        path="/"
-      />
+      <Seo {...ROUTES['/']} path="/" />
       <GlassDefs />
       <Hero />
       <Marquee />

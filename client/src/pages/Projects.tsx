@@ -3,6 +3,7 @@ import { gsap } from '../lib/gsap'
 import { useSite } from '../lib/api'
 import { useMotion } from '../hooks/useMotion'
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import PageHeader from '../components/PageHeader'
 import ProjectCard from '../components/ProjectCard'
 import CTA from '../sections/CTA'
@@ -25,7 +26,7 @@ export default function Projects() {
 
   return (
     <>
-      <Seo title="Projects" description="The Qadri Glass portfolio: architectural and decorative glass projects delivered across Pakistan." path="/projects" />
+      <Seo {...ROUTES['/projects']} path="/projects" />
       <PageHeader eyebrow="Portfolio" title={'Projects &\n_spaces._'} intro="A portfolio of genuine Qadri Glass work. Each project includes its location, category, glass applications, photography and technical details." />
       <section ref={root} className="relative bg-coal section">
         <div className="wrap">

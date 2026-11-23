@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useSite } from '../lib/api'
-import Seo from '../components/Seo'
+import Seo, { breadcrumbLd } from '../components/Seo'
 import PageHeader from '../components/PageHeader'
 import GlassPlaceholder from '../components/GlassPlaceholder'
 import Magnetic from '../components/Magnetic'
@@ -17,7 +17,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <Seo title={p.name} description={p.description.slice(0, 155)} path={`/products/${p.slug}`} image={p.image} />
+      <Seo title={p.name} description={p.description.slice(0, 155)} path={`/products/${p.slug}`} image={p.image} jsonLd={breadcrumbLd([{ name: 'Products', path: '/products' }, { name: p.name, path: `/products/${p.slug}` }])} />
       <PageHeader eyebrow="Product" title={p.name} intro={p.description} />
       <section className="bg-coal section">
         <div className="wrap grid gap-12 lg:grid-cols-12">

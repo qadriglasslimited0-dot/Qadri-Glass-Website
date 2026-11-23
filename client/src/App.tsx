@@ -4,6 +4,7 @@ import { SEED, SiteDataContext, fetchSiteData, type SiteData } from './lib/api'
 import { destroyLenis, initLenis } from './lib/lenis'
 import { markReady, ScrollTrigger } from './lib/gsap'
 import Preloader from './components/Preloader'
+import Seo from './components/Seo'
 import Cursor from './components/Cursor'
 import ScrollProgress from './components/ScrollProgress'
 import Nav from './components/Nav'
@@ -81,6 +82,7 @@ export default function App() {
       >
         Skip to content
       </a>
+      {isAdmin && <Seo title="Staff area" description="Qadri Glass staff area." path="/admin" noindex />}
       {!isAdmin && <Preloader />}
       {!isAdmin && <Cursor />}
       {!isAdmin && <ScrollProgress />}

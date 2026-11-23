@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Maximize2 } from 'lucide-react'
 import { gsap } from '../lib/gsap'
 import { useSite } from '../lib/api'
 import { useMotion } from '../hooks/useMotion'
-import Seo from '../components/Seo'
+import Seo, { breadcrumbLd } from '../components/Seo'
 import Split from '../components/Split'
 import GlassPlaceholder from '../components/GlassPlaceholder'
 import Lightbox from '../components/Lightbox'
@@ -36,7 +36,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Seo title={p.name} description={p.description.slice(0, 155)} path={`/projects/${p.slug}`} image={p.images[0]} />
+      <Seo title={p.name} description={p.description.slice(0, 155)} path={`/projects/${p.slug}`} image={p.images[0]} type="article" jsonLd={breadcrumbLd([{ name: 'Projects', path: '/projects' }, { name: p.name, path: `/projects/${p.slug}` }])} />
       <article ref={root}>
         <header className="bg-coal pb-12 pt-[clamp(120px,16vw,200px)]">
           <div className="wrap">

@@ -4,7 +4,7 @@ import Seo from '../components/Seo'
 export default function NotFound() {
   return (
     <section className="grid min-h-[100svh] place-items-center bg-ink px-6 text-center">
-      <Seo title="Page not found" description="This page could not be found." />
+      <Seo title="Page not found" description="This page could not be found." noindex />
       <div>
         <p className="eyebrow mb-6">Error 404</p>
         <h1 className="display h-lg">

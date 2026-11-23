@@ -1,5 +1,6 @@
 import { useSite } from '../lib/api'
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import PageHeader from '../components/PageHeader'
 import QualitySection from '../sections/QualitySection'
 import ProcessTimeline from '../sections/ProcessTimeline'
@@ -11,7 +12,7 @@ export default function Quality() {
   const verified = certificates.filter((c) => c.verified)
   return (
     <>
-      <Seo title="Quality" description="Precision manufacturing, material traceability, in-process inspection and documented standards at Qadri Glass." path="/quality" />
+      <Seo {...ROUTES['/quality']} path="/quality" />
       <PageHeader eyebrow="Quality" title={'Built on\n_precision._'} intro="Four principles guide how Qadri Glass cuts, finishes, inspects and documents its work." />
       <QualitySection heading={false} />
       <section className="bg-ink section">

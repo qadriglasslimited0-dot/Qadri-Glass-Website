@@ -4,6 +4,7 @@ import { ArrowRight, Check, MapPin, MessageCircle, Paperclip, Phone, Mail, X } f
 import { PROJECT_CATEGORIES } from '../lib/content'
 import { submitEnquiry, useCompany } from '../lib/api'
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import PageHeader from '../components/PageHeader'
 import Magnetic from '../components/Magnetic'
 
@@ -74,7 +75,7 @@ export default function Contact() {
 
   return (
     <>
-      <Seo title="Contact" description="Contact Qadri Glass Pvt. Ltd., 278/3 Main Peco Road, Kot Lakhpat, Lahore. Call 0300 8434320 or send an enquiry." path="/contact" />
+      <Seo {...ROUTES['/contact']} path="/contact" />
       <PageHeader eyebrow="Contact" title={"LET'S SHAPE\nSOMETHING _EXTRAORDINARY._"} />
       <section className="bg-coal section">
         <div className="wrap grid gap-16 lg:grid-cols-12">

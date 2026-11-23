@@ -1,4 +1,5 @@
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import PageHeader from '../components/PageHeader'
 import Story from '../sections/Story'
 import Stats from '../sections/Stats'
@@ -9,7 +10,7 @@ import { COMPANY } from '../lib/content'
 export default function About() {
   return (
     <>
-      <Seo title="About" description="Founded in 1960 by Mr. Ghulam M.Q., Qadri Glass has grown across three generations into a glass business spanning import, supply, fabrication and installation." path="/about" />
+      <Seo {...ROUTES['/about']} path="/about" />
       <PageHeader eyebrow="About Qadri Glass" title={'Since 1960,\n_glass_ is our craft.'} intro="What began as a modest retail glass business has grown, across three generations of family leadership, into a business spanning import, supply, fabrication and installation." />
       <Story />
       <Stats />

@@ -5,6 +5,7 @@ import { gsap } from '../lib/gsap'
 import { useSite } from '../lib/api'
 import { useMotion } from '../hooks/useMotion'
 import Seo from '../components/Seo'
+import ROUTES from '../lib/seoRoutes.json'
 import PageHeader from '../components/PageHeader'
 import GlassPlaceholder from '../components/GlassPlaceholder'
 import CTA from '../sections/CTA'
@@ -26,7 +27,7 @@ export default function Products() {
 
   return (
     <>
-      <Seo title="Products" description="Explore Qadri Glass products: photography, descriptions, technical specifications and applications, with a direct enquiry for each." path="/products" />
+      <Seo {...ROUTES['/products']} path="/products" />
       <PageHeader eyebrow="Product catalogue" title={'Glass, in\n_detail._'} intro="Each product is presented with photography, description, technical specifications and applications — and a direct line to our team." />
       <section ref={root} className="bg-coal section">
         <div className="wrap">

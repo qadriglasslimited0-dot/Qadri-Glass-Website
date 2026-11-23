@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.example.com/</loc><lastmod>2026-11-21</lastmod><priority>1.0</priority></url>
-  <url><loc>https://www.example.com/about</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/products</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/projects</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/services</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/services/architectural-glass</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/services/custom-fabrication</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/services/professional-installation</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/services/decorative-solutions</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/quality</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.example.com/contact</loc><lastmod>2026-11-21</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/</loc><lastmod>2026-11-23</lastmod><priority>1.0</priority></url>
+  <url><loc>https://qadriglass.com/about</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/products</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/projects</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/services</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/quality</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/contact</loc><lastmod>2026-11-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://qadriglass.com/services/architectural-glass</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/services/custom-fabrication</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/services/professional-installation</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/services/decorative-solutions</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/projects/toyota-jhelum-motors</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/projects/cmh-hospital-lahore</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/projects/classy-wheels-showroom-lahore</loc><lastmod>2026-11-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://qadriglass.com/products/bronze-reflective-glass-brown-mercury</loc><lastmod>2026-11-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://qadriglass.com/products/antique-mirror-glass</loc><lastmod>2026-11-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://qadriglass.com/products/ocean-blue-tinted-glass</loc><lastmod>2026-11-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://qadriglass.com/products/grey-tinted-glass</loc><lastmod>2026-11-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://qadriglass.com/products/clear-float-glass</loc><lastmod>2026-11-23</lastmod><priority>0.6</priority></url>
 </urlset>

@@ -10,6 +10,19 @@
       "framework": "express"
     }
   },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.qadriglass.com"
+        }
+      ],
+      "destination": "https://qadriglass.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
