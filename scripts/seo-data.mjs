@@ -5,10 +5,8 @@ import { dirname, resolve } from 'node:path'
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
-const DEFAULT_SITE = 'https://qadriglass.com'
-const fromEnv = (process.env.VITE_SITE_URL || process.env.SITE_URL || '').trim().replace(/\/$/, '')
-// a placeholder, localhost or preview host is ignored: the canonical address is always the real domain
-export const SITE = !fromEnv || /example\.com|localhost|127\.0\.0\.1|vercel\.app|netlify\.app/i.test(fromEnv) ? DEFAULT_SITE : fromEnv
+// Fixed on purpose (see client/src/lib/site.ts): qadriglass.com redirects to www, so www is the canonical host.
+export const SITE = 'https://www.qadriglass.com'
 
 /** Reads a value from the environment, falling back to client/.env (local builds). */
 function env(key) {

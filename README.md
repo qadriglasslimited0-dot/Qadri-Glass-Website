@@ -57,11 +57,10 @@ The "Powered by FRX Technologies" link reads `COMPANY.developer` and `COMPANY.de
 Change the URL there once the official FRX domain is live.
 
 ## SEO and Google Search Console
-The site's address is `https://qadriglass.com` (set in `client/src/lib/site.ts` and `scripts/seo-data.mjs`; `VITE_SITE_URL` overrides it
-when it holds the real domain, and placeholder, localhost and `*.vercel.app` values are ignored).
+The site's address is `https://www.qadriglass.com` (the domain redirects `qadriglass.com` to `www`, so `www` is the canonical host) (fixed in `client/src/lib/site.ts` and `scripts/seo-data.mjs`; `VITE_SITE_URL` is not used for this).
 
 What the build produces (`npm run build`):
-- `sitemap.xml` and `robots.txt` for `qadriglass.com`, including every published service, project and product from Supabase.
+- `sitemap.xml` and `robots.txt` for `www.qadriglass.com`, including every published service, project and product from Supabase.
   **Projects added later appear in the sitemap after the next deploy** (Vercel redeploy, or push a commit).
 - A copy of the page for every route (`dist/about/index.html`, `dist/projects/<slug>/index.html`, ...) carrying that page's own
   title, description, canonical and Open Graph tags plus a plain-HTML `<noscript>` summary. Edit the wording in
@@ -70,6 +69,6 @@ What the build produces (`npm run build`):
 - Google ownership: `client/public/google3db125d6f1349098.html` and the `google-site-verification` meta tag in `client/index.html`.
 - `/admin` and `/api` are disallowed; 404 and staff pages are `noindex`.
 
-After deploying: add `qadriglass.com` to the Vercel project (and `www.qadriglass.com`, which `vercel.json` redirects to the bare domain),
-then in Search Console choose **Verify**, submit `https://qadriglass.com/sitemap.xml`, and use **URL Inspection → Request indexing** for the home page.
-Also set the Supabase Auth Site URL to `https://qadriglass.com`.
+After deploying: add `www.qadriglass.com` and `qadriglass.com` to the Vercel project (keep the redirect from `qadriglass.com` to `www`),
+then in Search Console choose **Verify**, submit `https://www.qadriglass.com/sitemap.xml`, and use **URL Inspection → Request indexing** for the home page.
+Also set the Supabase Auth Site URL to `https://www.qadriglass.com`.

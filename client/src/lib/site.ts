@@ -1,14 +1,8 @@
 /**
- * The public address of the website. Used for canonical links, Open Graph and structured data.
- * It comes from VITE_SITE_URL when that holds the real domain; a placeholder, localhost or a preview host
- * (vercel.app / netlify.app) is ignored so the canonical address is always the real one.
+ * The public address of the website, used for canonical links, Open Graph and structured data.
+ * It is fixed in code on purpose: an environment variable that disagrees with the domain's real primary host
+ * (for example the bare domain while the site is served from www) would make every canonical tag point at a
+ * redirect. qadriglass.com redirects to www.qadriglass.com, so www is the canonical host.
+ * Change it here and in scripts/seo-data.mjs if the primary host ever changes.
  */
-export const DEFAULT_SITE_URL = 'https://qadriglass.com'
-
-export function resolveSiteUrl(value?: string): string {
-  const v = (value ?? '').trim().replace(/\/$/, '')
-  if (!v || /example\.com|localhost|127\.0\.0\.1|vercel\.app|netlify\.app/i.test(v)) return DEFAULT_SITE_URL
-  return v
-}
-
-export const SITE_URL = resolveSiteUrl(import.meta.env.VITE_SITE_URL as string | undefined)
+export const SITE_URL = 'https://www.qadriglass.com'
